@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derm.ethic — Treinamento de Vendas</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="wrap">
+<div id="sidebar-container"></div>
+<main class="main">
+  <div class="page-hdr"><div><div class="page-title">Treinamento de Vendas</div><div class="page-sub">Estratégias detalhadas por canal: farmácias, salões, lojas especializadas e supermercados</div></div></div>
+  <div class="page-body">
+
+```
+<div class="g4" style="margin-bottom:20px">
+  <div class="stat"><div class="stat-icon">💊</div><div class="stat-label">Farmácias</div><div class="stat-val" style="font-size:22px">Canal #1</div><div class="stat-sub">Maior ticket B2B</div></div>
+  <div class="stat"><div class="stat-icon">✂️</div><div class="stat-label">Salões</div><div class="stat-val" style="font-size:22px">Canal #2</div><div class="stat-sub">Influenciadores locais</div></div>
+  <div class="stat"><div class="stat-icon">🛍️</div><div class="stat-label">Lojas Esp.</div><div class="stat-val" style="font-size:22px">Canal #3</div><div class="stat-sub">Cliente qualificado</div></div>
+  <div class="stat"><div class="stat-icon">🛒</div><div class="stat-label">Supermercados</div><div class="stat-val" style="font-size:22px">Canal #4</div><div class="stat-sub">Volume e alcance</div></div>
+</div>
+
+<!-- FARMÁCIAS -->
+<div class="tr-ch">
+  <div class="tr-hdr" onclick="togTr(this)">
+    <div class="tr-icon" style="background:#E6F0FA;font-size:22px">💊</div>
+    <div style="flex:1"><div style="font-weight:600;font-size:15px">Farmácias e Drogarias</div><div style="font-size:12px;color:var(--muted)">Alta credibilidade — produto próximo ao universo da saúde e bem-estar</div></div>
+    <span style="color:var(--muted);font-size:18px">▸</span>
+  </div>
+  <div class="tr-body">
+    <div class="g2">
+      <div>
+        <div class="sh">🎯 Quem Decide e Como Abordar</div>
+        <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Mapeie o tomador de decisão</h4><p><strong>Independente:</strong> proprietário ou farmacêutico responsável. <strong>Rede pequena/média:</strong> gerente de compras. <strong>Rede grande (Raia, Pague Menos):</strong> comprador corporativo — processo formal com dossiê completo.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Argumento técnico primeiro</h4><p>Farmácias valorizam: registro Anvisa ativo, laudos de segurança, tabela de composição (INCI), responsável técnico identificado. Chegue com esses documentos prontos — diferencia de marcas não estruturadas.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Argumento comercial segundo</h4><p>Após a validação técnica, apresentar: margem sugerida (30–45%), política de trocas, prazo de entrega, pedido mínimo reduzido para estreia e material de PDV incluso.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Treinamento de balconistas</h4><p>Ofereça treinamento gratuito de 30 minutos para a equipe. Balconistas treinados vendem 3–5x mais que os não treinados. Esse diferencial fideliza a farmácia.</p></div></div>
+        <div class="div"></div>
+        <div class="sh">📞 Script de Abordagem</div>
+        <div class="ib info" style="font-style:italic">"Bom dia! Sou [nome] da Derm.ethic Cosméticos, empresa catarinense especializada em dermocosméticos com base científica, sediada em Itajaí. Nossos produtos são registrados na Anvisa, com laudos de segurança e eficácia. Posso falar 10 minutos com o responsável pelas compras de higiene e beleza? Trouxe amostras para a equipe testar."</div>
+        <div class="ib tip"><strong>Dica:</strong> Mencione que é empresa local de SC — gera empatia, sensação de exclusividade regional e valorização da economia local. Chegue com amostras físicas — nunca faça apresentação em farmácia sem produto nas mãos.</div>
+      </div>
+      <div>
+        <div class="sh">💡 Estratégias Avançadas</div>
+        <div class="ib ok"><strong>Margem sugerida ao PDV:</strong> 30–45% sobre preço de custo ao cliente. Quanto maior a margem, maior o esforço espontâneo do balconista em recomendar.</div>
+        <div class="ib ok"><strong>Material de PDV incluso:</strong> Wobbler, take-one, bandeja expositora — o custo de produção é recuperado na primeira venda e fideliza o espaço visual.</div>
+        <div class="ib warn"><strong>Para redes maiores:</strong> Prepare dossiê completo: ficha de cadastro de fornecedor, política comercial formalizada, tabela de preços com código EAN, política de trocas e devolução, prazo mínimo de entrega.</div>
+        <div class="ib tip"><strong>SC litoral:</strong> Farmácias em Balneário Camboriú, Florianópolis e Bombinhas têm alto fluxo turístico com poder aquisitivo. Priorizar para linha premium (Sérum Vitamina C, FPS 50+).</div>
+        <div class="div"></div>
+        <div class="sh">📋 Checklist — Visita à Farmácia</div>
+        <div class="checklist-item"><input type="checkbox"><div>Amostras de cada produto para deixar</div></div>
+        <div class="checklist-item"><input type="checkbox"><div>Tabela de preços com margem sugerida</div></div>
+        <div class="checklist-item"><input type="checkbox"><div>Fichas técnicas e folder informativo</div></div>
+        <div class="checklist-item"><input type="checkbox"><div>Material de PDV (wobbler ou take-one)</div></div>
+        <div class="checklist-item"><input type="checkbox"><div>Formulário de cadastro de cliente</div></div>
+        <div class="checklist-item"><input type="checkbox"><div>Registrar visita no sistema após retorno</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SALÕES -->
+<div class="tr-ch">
+  <div class="tr-hdr" onclick="togTr(this)">
+    <div class="tr-icon" style="background:#FCF0E8;font-size:22px">✂️</div>
+    <div style="flex:1"><div style="font-weight:600;font-size:15px">Salões de Beleza e Estúdios</div><div style="font-size:12px;color:var(--muted)">Venda consultiva — o profissional é o influenciador mais poderoso da cadeia</div></div>
+    <span style="color:var(--muted);font-size:18px">▸</span>
+  </div>
+  <div class="tr-body">
+    <div class="g2">
+      <div>
+        <div class="sh">🎯 Abordagem e Argumentação</div>
+        <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Decisão é 100% pessoal</h4><p>Cabeleireiro, esteticista ou dono decide por conta própria baseado em: experiência com o produto, resultado nos clientes e confiança na marca. Nunca venda por catálogo — sempre com demonstração.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><h4>A amostra é o argumento</h4><p>Deixe o produto para o profissional testar por 2 semanas, sem nenhum compromisso. Quem usa e aprova vira vendedor natural. Nunca tente fechar venda antes do profissional experimentar.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Programa Profissional</h4><p>Ofereça: preço especial (20–30% abaixo do varejo), certificado de parceiro Derm.ethic, materiais exclusivos para o salão, inclusão no mapa de parceiros (para clientes que perguntam onde comprar).</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Revenda com margem</h4><p>O profissional compra pelo preço de parceiro e revende ao cliente final pelo preço de varejo. Gera renda extra sem esforço adicional e mantém o produto presente no cotidiano do consumidor final.</p></div></div>
+        <div class="div"></div>
+        <div class="sh">📞 Script de Abordagem</div>
+        <div class="ib info" style="font-style:italic">"Oi [nome]! Sou da Derm.ethic, desenvolvemos produtos capilares e de skincare com formulação técnica para profissionais. Posso deixar algumas amostras para você testar com clientes e me dar um retorno em 2 semanas? Não tem compromisso nenhum — quero saber o que você e seus clientes acharam!"</div>
+      </div>
+      <div>
+        <div class="sh">💡 Estratégias</div>
+        <div class="ib tip"><strong>Demo Day:</strong> Organize um evento no salão: 2 horas dedicadas a demonstrar os produtos no serviço (hidratação capilar, facial express). Gera conteúdo, engajamento e converte na hora.</div>
+        <div class="ib ok"><strong>Co-marketing:</strong> Crie arte personalizada para o profissional publicar nas redes sociais sobre os produtos. Marque a Derm.ethic — visibilidade mútua sem custo.</div>
+        <div class="ib ok"><strong>Protocolo de tratamento:</strong> Ofereça um protocolo de tratamento com os produtos da Derm.ethic que o profissional pode cobrar dos clientes como serviço premium.</div>
+        <div class="ib warn"><strong>Horário certo:</strong> Visite salões entre 14h–17h (evite horários de pico: manhã até meio-dia e fim da tarde). Avise antes por WhatsApp — nunca apareça sem avisar.</div>
+        <div class="div"></div>
+        <div class="sh">📋 Checklist — Visita ao Salão</div>
+        <div class="checklist-item"><input type="checkbox"><div>Kit de amostras (capilar + facial se aplicável)</div></div>
+        <div class="checklist-item"><input type="checkbox"><div>Tabela de preços programa profissional</div></div>
+        <div class="checklist-item"><input type="checkbox"><div>Protocolo de tratamento sugerido</div></div>
+        <div class="checklist-item"><input type="checkbox"><div>Material de co-marketing para as redes</div></div>
+        <div class="checklist-item"><input type="checkbox"><div>Agendar retorno em 2 semanas para feedback</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOJAS ESPECIALIZADAS -->
+<div class="tr-ch">
+  <div class="tr-hdr" onclick="togTr(this)">
+    <div class="tr-icon" style="background:#F0EAF8;font-size:22px">🛍️</div>
+    <div style="flex:1"><div style="font-weight:600;font-size:15px">Lojas Especializadas em Cosméticos</div><div style="font-size:12px;color:var(--muted)">Cliente qualificado e consciente — busca ativamente por produtos diferenciados</div></div>
+    <span style="color:var(--muted);font-size:18px">▸</span>
+  </div>
+  <div class="tr-body">
+    <div class="g2">
+      <div>
+        <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Quem decide</h4><p>Dono ou gerente de compras. Em multimarcas independentes o processo é ágil — uma boa apresentação e amostras podem fechar em uma reunião. Em redes (Sephora, O Boticário, Época): processo formal e longo.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Diferenciação como argumento</h4><p>O cliente da loja especializada já conhece as grandes marcas. Posicione a Derm.ethic como "a alternativa premium com ciência real e transparência de ingredientes" — o que as grandes marcas não têm.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Merchandising estratégico</h4><p>Negocie posição de gôndola (altura dos olhos = 70% mais vendas). Treine os consultores da loja. Invista em expositor exclusivo da marca para criar área "Derm.ethic" na loja.</p></div></div>
+      </div>
+      <div>
+        <div class="ib warn"><strong>Exclusividade regional:</strong> Para lojas independentes, ofereça exclusividade na praça por 6 meses. Cria comprometimento e priorização dos produtos na indicação ao consumidor.</div>
+        <div class="ib tip"><strong>Ativação in-store:</strong> Workshops mensais dentro da loja — dermatologista ou farmacêutico como convidado. Gera conteúdo, atrai clientes e posiciona a loja como especialista.</div>
+        <div class="ib ok"><strong>Margem:</strong> 40–55%. Lojas especializadas precisam de margem mais atrativa para justificar o custo do espaço premium. Nunca dê descontos que desvalorizem o posicionamento.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUPERMERCADOS -->
+<div class="tr-ch">
+  <div class="tr-hdr" onclick="togTr(this)">
+    <div class="tr-icon" style="background:#E8F4E8;font-size:22px">🛒</div>
+    <div style="flex:1"><div style="font-weight:600;font-size:15px">Supermercados e Hipermercados</div><div style="font-size:12px;color:var(--muted)">Volume e alcance de massa — decisão de compra mais impulsiva e por preço</div></div>
+    <span style="color:var(--muted);font-size:18px">▸</span>
+  </div>
+  <div class="tr-body">
+    <div class="g2">
+      <div>
+        <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Processo formal de compras</h4><p>Comprador do departamento de HPC (Higiene, Perfumaria e Cosméticos). Exige: cadastro formal de fornecedor, tabela de preços, política de trocas, embalagem com código EAN e histórico de vendas (sell-out).</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><h4>A embalagem vende sozinha</h4><p>No supermercado não existe consultor — a embalagem precisa comunicar o benefício em 3 segundos de visualização. Invista em design impactante, claim claro na frente e diferencial visual no ponto de venda.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Argumento de giro</h4><p>Supermercado pensa em giro de estoque, não em qualidade. Apresente: histórico de vendas em outros pontos, dados de categoria, sazonalidade do produto e comparação com líderes.</p></div></div>
+      </div>
+      <div>
+        <div class="ib warn"><strong>Verbas de entrada:</strong> Grandes redes cobram verba para: cadastro de fornecedor, posição de gôndola, participação em tabloide e campanhas sazonais. Calcule esses custos antes de prospectar para não operar no prejuízo.</div>
+        <div class="ib tip"><strong>Comece local:</strong> Entre primeiro em supermercados regionais de SC e construa histórico de sell-out. Com dados reais, a negociação com redes maiores fica muito mais fácil e embasada.</div>
+        <div class="ib ok"><strong>Distribuidor parceiro:</strong> Para escalar em supermercados, trabalhe com distribuidor regional que já tem cadastro ativo nas redes. Agiliza o processo e divide o risco da operação.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OBJEÇÕES -->
+<div class="card" style="margin-top:16px">
+  <div class="card-title">💬 Guia de Tratamento de Objeções</div>
+  <table><thead><tr><th>Objeção</th><th>Resposta técnica</th><th>Argumento complementar</th></tr></thead>
+  <tbody>
+    <tr><td>"Já tenho fornecedores de cosméticos"</td><td>"Entendo. Nossa linha é complementar — atuamos no segmento de dermocosméticos técnicos, que tem uma demanda crescente diferente das marcas tradicionais."</td><td>Mostrar que os produtos atendem um público específico que os fornecedores atuais não cobrem.</td></tr>
+    <tr><td>"Seus produtos são caros"</td><td>"O preço é proporcional à concentração real dos ativos e aos laudos técnicos que garantem eficácia. Veja a margem — você recupera com o primeiro pedido."</td><td>Comparar custo-benefício com concorrentes. Focar na margem, não no preço absoluto.</td></tr>
+    <tr><td>"Não conheço essa marca"</td><td>"Somos uma marca nova e em crescimento — é exatamente por isso que estamos chegando até você primeiro, antes da concorrência. Primeiros a entrar têm vantagem de exclusividade."</td><td>Deixar amostras para experiência direta com o produto. A experiência é o melhor argumento.</td></tr>
+    <tr><td>"Preciso pensar"</td><td>"Sem problema! Posso deixar as amostras para você testar enquanto decide? Em duas semanas retorno para saber o que você achou."</td><td>Nunca pressione. Prazo de retorno curto + amostra mantém a negociação ativa.</td></tr>
+    <tr><td>"Tem registro na Anvisa?"</td><td>"Sim, trabalhamos com notificação/registro Anvisa para todos os produtos. Posso te enviar o comprovante por e-mail agora?"</td><td>Ter os comprovantes sempre acessíveis no celular para envio imediato — agilidade fecha venda.</td></tr>
+  </tbody></table>
+</div>
+```
+
+  </div>
+</main>
+</div><!-- /wrap -->
+<div class="tcon" id="tcon"></div>
+<script src="js/db.js"></script>
+<script>
+renderSidebar('treinamento');
+function togTr(hdr){
+  const body=hdr.nextElementSibling,arrow=hdr.querySelector('span:last-child'),isOpen=body.classList.contains('open');
+  document.querySelectorAll('.tr-body').forEach(b=>b.classList.remove('open'));
+  document.querySelectorAll('.tr-hdr span:last-child').forEach(a=>a.textContent='▸');
+  if(!isOpen){body.classList.add('open');arrow.textContent='▾';}
+}
+</script>
+</body>
+</html>
