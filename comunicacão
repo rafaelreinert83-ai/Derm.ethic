@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derm.ethic — IA & Comunicação</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="wrap">
+<div id="sidebar-container"></div>
+<main class="main">
+  <div class="page-hdr">
+    <div><div class="page-title">IA & Comunicação</div><div class="page-sub">Assistente inteligente Derm.ethic com 8 modos especializados</div></div>
+    <div id="api-badge"><span class="badge bg-amber">⚠ Configure API Key em Configurações</span></div>
+  </div>
+  <div class="page-body">
+    <div class="chat-wrap">
+
+```
+  <!-- SIDEBAR DO CHAT -->
+  <div class="chat-side">
+    <div class="card" style="padding:14px">
+      <div style="font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px">Modo do Assistente</div>
+      <div style="display:flex;flex-direction:column;gap:5px" id="mode-btns">
+        <button class="btn btn-o btn-sm" onclick="setMode('geral')" id="m-geral">💬 Geral</button>
+        <button class="btn btn-o btn-sm" onclick="setMode('formulacao')" id="m-formulacao">🧪 Formulação</button>
+        <button class="btn btn-o btn-sm" onclick="setMode('anvisa')" id="m-anvisa">🏛 Anvisa / Reg.</button>
+        <button class="btn btn-o btn-sm" onclick="setMode('marketing')" id="m-marketing">📣 Marketing</button>
+        <button class="btn btn-o btn-sm" onclick="setMode('vendas')" id="m-vendas">🛒 Estratégia Vendas</button>
+        <button class="btn btn-o btn-sm" onclick="setMode('email')" id="m-email">📧 Redigir E-mail</button>
+        <button class="btn btn-o btn-sm" onclick="setMode('whatsapp')" id="m-whatsapp">💚 Mensagem WA</button>
+        <button class="btn btn-o btn-sm" onclick="setMode('prospec')" id="m-prospec">🎯 Prospecção B2B</button>
+      </div>
+    </div>
+    <div class="card" style="padding:12px">
+      <div style="font-size:11px;font-weight:500;color:var(--muted);margin-bottom:7px">Sugestões Rápidas</div>
+      <div style="display:flex;flex-direction:column;gap:4px" id="sugest-list"></div>
+    </div>
+    <button class="btn btn-o btn-sm" onclick="clearChat()" style="width:100%">🗑 Limpar conversa</button>
+  </div>
+
+  <!-- CHAT PRINCIPAL -->
+  <div class="chat-main">
+    <div style="padding:11px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:var(--surface)">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--p);display:flex;align-items:center;justify-content:center;font-family:var(--fd);color:var(--accent);font-size:12px;font-weight:600;flex-shrink:0">DE</div>
+      <div><div style="font-weight:500;font-size:13px">IA Derm.ethic</div><div style="font-size:11px;color:var(--muted)" id="mode-lbl">Modo: Assistente Geral</div></div>
+      <div style="margin-left:auto;font-size:11px;color:var(--muted)" id="hist-count">0 mensagens</div>
+    </div>
+    <div class="chat-msgs" id="chat-msgs">
+      <div class="cm ai">
+        <div class="cav">DE</div>
+        <div class="cbub">
+          👋 Olá! Sou a <strong>IA da Derm.ethic Cosméticos</strong>.<br><br>
+          Posso ajudar com formulações, regulatório Anvisa, estratégias de marketing e vendas, redigir e-mails e mensagens de WhatsApp, e muito mais.<br><br>
+          <strong>Para começar:</strong> Configure sua <a href="configuracoes.html" style="color:var(--accent)">API Key da Anthropic</a> em ⚙ Configurações e selecione um modo ao lado.
+        </div>
+      </div>
+    </div>
+    <div class="chat-in-area">
+      <textarea class="chat-ta" id="chat-in" placeholder="Digite sua mensagem... (Enter para enviar, Shift+Enter para nova linha)" rows="2" onkeydown="chatKey(event)"></textarea>
+      <button class="btn btn-p" id="btn-send" onclick="sendChat()" style="align-self:flex-end;min-width:80px">
+        <span id="send-txt">Enviar</span>
+        <span id="send-spin" style="display:none" class="spin"></span>
+      </button>
+    </div>
+  </div>
+
+</div>
+```
+
+  </div>
+</main>
+</div><!-- /wrap -->
+<div class="tcon" id="tcon"></div>
+<script src="js/db.js"></script>
+<script>
+renderSidebar('comunicacao');
+
+const MODES = {
+geral: {
+lbl:‘Modo: Assistente Geral’,
+sys:`Você é o assistente de IA da Derm.ethic Cosméticos Ltda, empresa brasileira de dermocosméticos fundada em 2022, sediada em Itajaí, SC (CNPJ 46.732.098/0001-72). Sua missão é auxiliar a equipe gestora com qualquer questão empresarial: clientes, fornecedores, processos, estratégias, decisões e operações. Responda sempre em português do Brasil de forma profissional, direta e útil.`,
+sug:[‘Quais são as principais tendências em dermocosméticos para 2025?’,‘Como calcular o ponto de equilíbrio de um produto cosmético?’,‘Quais certificações valorizam uma marca de cosméticos no Brasil?’,‘Me dê um checklist para lançar um novo produto’]
+},
+formulacao: {
+lbl:‘Modo: Formulação Cosmética’,
+sys:`Você é um cosmetólogo e formulador especialista com profundo conhecimento em ciência cosmética, ingredientes INCI, estabilidade, compatibilidade, pH, emulsificação e regulatório Anvisa. Ajude a equipe da Derm.ethic a desenvolver, ajustar e documentar formulações. Use linguagem técnica precisa. Baseie-se nas normas brasileiras (Anvisa, RDC 752/2022). Contexto: Derm.ethic Cosméticos, Itajaí – SC, dermocosméticos com base científica.`,
+sug:[‘Qual a concentração ideal de Niacinamida para controle de sebo sem irritação?’,‘Como estabilizar Vitamina C (ácido ascórbico) em formulação aquosa?’,‘Quais conservantes são aprovados pela Anvisa para leave-on facial?’,‘Como formular um sérum aquoso com textura de absorção rápida?’]
+},
+anvisa: {
+lbl:‘Modo: Regulatório & Anvisa’,
+sys:`Você é um consultor regulatório especialista em legislação cosmética brasileira. Auxilie a Derm.ethic com: notificação e registro Grau 1 e 2, claims cosméticos (RDC 07/2015), rotulagem (RDC 04/2014), lista de ingredientes (RDC 752/2022), DATAVISA, laudos exigidos, ingredientes permitidos e proibidos, e boas práticas de fabricação (BPCS). Sempre cite a norma específica. Seja preciso sobre o que é obrigatório vs. recomendado.`,
+sug:[‘Qual a diferença entre cosmético Grau 1 e Grau 2 pela Anvisa?’,‘Quais documentos são obrigatórios para registrar um protetor solar?’,‘Como fazer a notificação de shampoo no DATAVISA passo a passo?’,‘Quais ingredientes estão proibidos em cosméticos pela RDC 752/2022?’]
+},
+marketing: {
+lbl:‘Modo: Marketing de Cosméticos’,
+sys:`Você é especialista em marketing para a indústria de beleza e cosméticos no Brasil. Auxilie a Derm.ethic a criar estratégias de marketing digital, planos de lançamento, construção de marca, comunidade de clientes e comunicação multicanal. Conhece profundamente: Instagram, TikTok, e-mail marketing, WhatsApp Business e parcerias com influencers. Sempre considere o posicionamento ético e científico da marca.`,
+sug:[‘Crie um plano de lançamento de 60 dias para um sérum facial novo’,‘Como construir autoridade de marca no segmento de dermocosméticos?’,‘Que tipo de conteúdo performa melhor para marcas de skincare no Instagram?’,‘Como usar UGC (conteúdo de usuários) para aumentar vendas?’]
+},
+vendas: {
+lbl:‘Modo: Estratégia de Vendas’,
+sys:`Você é especialista em estratégia comercial para a indústria de cosméticos. Auxilie a Derm.ethic com: abordagem de vendas B2B (farmácias, salões, distribuidores, supermercados) e B2C, argumentação por canal, precificação, negociação, materiais de PDV, treinamento de equipe, gestão de clientes e CRM. Foco prático em táticas que funcionam para marcas emergentes no Brasil.`,
+sug:[‘Script completo de prospecção para farmácias independentes’,‘Como negociar entrada em uma rede de farmácias regional de SC?’,‘Qual a margem ideal para distribuidores de dermocosméticos?’,‘Como montar um programa de fidelidade para clientes B2B?’]
+},
+email: {
+lbl:‘Modo: Redação de E-mails’,
+sys:`Você redige e-mails profissionais e persuasivos para a Derm.ethic Cosméticos. Foco em: prospecção B2B (farmácias, salões, distribuidoras), follow-up, propostas comerciais, apresentação de novos produtos, respostas a objeções e comunicação com fornecedores. Use linguagem profissional, clara, com CTA definido. Sempre inclua sugestão de assunto. Adapte o tom ao objetivo: formal para corporativo, mais caloroso para relações já estabelecidas.`,
+sug:[‘E-mail de apresentação da Derm.ethic para comprador de farmácia’,‘Follow-up para cliente que não respondeu há 10 dias’,‘Proposta comercial para novo distribuidor regional’,‘E-mail de agradecimento e pedido de avaliação após primeira compra’]
+},
+whatsapp: {
+lbl:‘Modo: Mensagens WhatsApp’,
+sys:`Você redige mensagens curtas e eficazes para WhatsApp Business da Derm.ethic. Mensagens diretas, amigáveis, com CTA claro, máximo 4 parágrafos curtos. Use emojis com moderação. Adapte o tom: mais formal para contato inicial com farmácias, mais próximo para salões e clientes recorrentes. NUNCA escreva mensagem longa — se o conteúdo for extenso, sugira enviar por e-mail.`,
+sug:[‘Primeiro contato com salão de beleza novo’,‘Aviso de lançamento de produto para lista VIP’,‘Follow-up de orçamento enviado há 3 dias’,‘Cobrança amigável de pagamento em atraso 5 dias’]
+},
+prospec: {
+lbl:‘Modo: Prospecção B2B’,
+sys:`Você é especialista em prospecção e desenvolvimento de negócios B2B para empresas de cosméticos. Auxilie a Derm.ethic com: estratégias de prospecção para farmácias, salões, distribuidores e supermercados; scripts de cold call e visita; qualificação de leads; abordagem em feiras e eventos; e táticas de follow-up que convertem sem pressionar o prospect. Foco em mercado de Santa Catarina e Brasil.`,
+sug:[‘Estratégia para prospectar 20 farmácias em Itajaí e Balneário Camboriú em 30 dias’,‘Como identificar e qualificar distribuidores de cosméticos em SC?’,‘Script de visita presencial para salão de beleza — do início ao fechamento’,‘Como abordar um supermercado regional que nunca comprou cosméticos de marca local?’]
+}
+};
+
+let curMode=‘geral’, chatHist=[];
+
+function setMode(mode){
+curMode=mode;
+const m=MODES[mode];
+document.getElementById(‘mode-lbl’).textContent=m.lbl;
+document.querySelectorAll(’#mode-btns button’).forEach(b=>b.classList.remove(‘btn-p’));
+document.querySelectorAll(’#mode-btns button’).forEach(b=>b.classList.add(‘btn-o’));
+const activeBtn=document.getElementById(‘m-’+mode);
+if(activeBtn){activeBtn.classList.remove(‘btn-o’);activeBtn.classList.add(‘btn-p’);}
+document.getElementById(‘sugest-list’).innerHTML=m.sug.map(s=>`<button class="btn btn-o btn-sm" onclick="sendSug(this.textContent)" style="text-align:left;white-space:normal;line-height:1.4;height:auto;padding:5px 9px">${s}</button>`).join(’’);
+}
+
+function sendSug(t){document.getElementById(‘chat-in’).value=t;sendChat();}
+function clearChat(){chatHist=[];document.getElementById(‘chat-msgs’).innerHTML=’<div class="cm ai"><div class="cav">DE</div><div class="cbub">Conversa reiniciada. Selecione um modo e faça sua pergunta!</div></div>’;document.getElementById(‘hist-count’).textContent=‘0 mensagens’;}
+function chatKey(e){if(e.key===‘Enter’&&!e.shiftKey){e.preventDefault();sendChat();}}
+
+function appendMsg(role,html){
+const msgs=document.getElementById(‘chat-msgs’);
+const el=document.createElement(‘div’);el.className=’cm ’+role;
+el.innerHTML=`<div class="cav${role==='user'?' user':''}">${role==='user'?'Vc':'DE'}</div><div class="cbub">${html}</div>`;
+msgs.appendChild(el);msgs.scrollTop=msgs.scrollHeight;
+return el;
+}
+
+function formatResp(t){return t.replace(/\n\n/g,’<br><br>’).replace(/\n/g,’<br>’).replace(/**(.*?)**/g,’<strong>$1</strong>’).replace(/*(.*?)*/g,’<em>$1</em>’);}
+
+async function sendChat(){
+const inp=document.getElementById(‘chat-in’);
+const msg=inp.value.trim();if(!msg)return;
+const db=getDB();const key=db.cfg?.key;
+if(!key){toast(‘Configure a API Key em ⚙ Configurações’,‘e’);return;}
+appendMsg(‘user’,msg.replace(/\n/g,’<br>’));
+inp.value=’’;
+chatHist.push({role:‘user’,content:msg});
+document.getElementById(‘send-txt’).style.display=‘none’;document.getElementById(‘send-spin’).style.display=‘inline-block’;
+document.getElementById(‘btn-send’).disabled=true;
+const loader=appendMsg(‘ai’,’<span style="color:var(--muted);font-style:italic">Processando…</span>’);
+try{
+const resp=await fetch(‘https://api.anthropic.com/v1/messages’,{
+method:‘POST’,
+headers:{‘Content-Type’:‘application/json’,‘x-api-key’:key,‘anthropic-version’:‘2023-06-01’,‘anthropic-dangerous-direct-browser-access’:‘true’},
+body:JSON.stringify({model:db.cfg?.model||‘claude-sonnet-4-20250514’,max_tokens:2000,system:MODES[curMode].sys,messages:chatHist})
+});
+const raw=await resp.text();const data=JSON.parse(raw);
+const text=data.content?.map(b=>b.text||’’).join(’’)||‘Erro na resposta.’;
+loader.querySelector(’.cbub’).innerHTML=formatResp(text);
+chatHist.push({role:‘assistant’,content:text});
+document.getElementById(‘hist-count’).textContent=`${Math.floor(chatHist.length/2)} mensagens`;
+}catch(err){
+loader.querySelector(’.cbub’).innerHTML=`<span style="color:var(--danger)">Erro: ${err.message}</span><br><small>Verifique a API Key em <a href="configuracoes.html">Configurações</a>.</small>`;
+}
+document.getElementById(‘send-txt’).style.display=‘inline’;document.getElementById(‘send-spin’).style.display=‘none’;
+document.getElementById(‘btn-send’).disabled=false;
+document.getElementById(‘chat-in’).focus();
+}
+
+// Init
+const db=getDB();
+if(db.cfg?.key)document.getElementById(‘api-badge’).innerHTML=’<span class="badge bg-green">✅ API Configurada</span>’;
+setMode(‘geral’);
+</script>
+
+</body>
+</html>
