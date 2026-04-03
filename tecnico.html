@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derm.ethic — Técnico / Médico</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="wrap">
+<div id="sidebar-container"></div>
+<main class="main">
+  <div class="page-hdr"><div><div class="page-title">Conteúdo Técnico & Médico</div><div class="page-sub">Ciência dos ingredientes, claims regulatórios, protocolos de uso e painel Anvisa</div></div></div>
+  <div class="page-body">
+    <div class="tabs">
+      <div class="tab active" onclick="stab('tt','ing',this)">🧬 Ingredientes</div>
+      <div class="tab" onclick="stab('tt','claims',this)">📋 Claims & Regulatório</div>
+      <div class="tab" onclick="stab('tt','prot',this)">💆 Protocolos de Uso</div>
+      <div class="tab" onclick="stab('tt','anvisa',this)">🏛 Painel Anvisa</div>
+    </div>
+
+```
+<!-- INGREDIENTES -->
+<div id="tt-ing" class="tc-panel active">
+  <div class="g13">
+    <div class="card" style="min-width:0">
+      <div class="card-title" style="font-size:14px">🔍 Biblioteca</div>
+      <input class="fi" id="q-ing" type="text" placeholder="Buscar INCI ou nome..." oninput="rIng(this.value)" style="margin-bottom:10px">
+      <div id="lista-ing" style="max-height:calc(100vh - 280px);overflow-y:auto"></div>
+    </div>
+    <div id="det-ing-wrap">
+      <div class="card">
+        <div style="text-align:center;padding:40px;color:var(--muted)">
+          <div style="font-size:36px;margin-bottom:12px">🧬</div>
+          <div style="font-size:13px">Selecione um ingrediente ao lado para ver a ficha completa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLAIMS -->
+<div id="tt-claims" class="tc-panel">
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">📋 Claims Cosméticos — Diretrizes Anvisa</div>
+      <div class="ib info"><strong>Base legal:</strong> RDC 07/2015 — Dispõe sobre os requisitos técnicos para declaração de benefícios (claims) em cosméticos.</div>
+      <div class="sh" style="margin-top:14px">✅ Claims Permitidos sem comprovação adicional</div>
+      <p style="font-size:12.5px;color:var(--t2);line-height:1.7;margin-bottom:12px">Hidratante, suavizante, refrescante, perfumante, limpante, tonificante, antisséptico (leve), antissudorífico, desodorante, anticaspa (em concentrações definidas pela Anvisa), protetor solar (com FPS validado).</p>
+      <div class="sh">⚠️ Claims com comprovação obrigatória</div>
+      <p style="font-size:12.5px;color:var(--t2);line-height:1.7;margin-bottom:12px">Antienvelhecimento, anticelulite, clareador de manchas, firmador, antiestrias, estimulador de crescimento capilar, anti-acne com eficácia declarada, FPS acima de qualquer valor.</p>
+      <div class="sh">🔬 Documentação para claims de eficácia</div>
+      <div class="checklist-item"><input type="checkbox"><div>Laudo de estudo clínico ou instrumental validado</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Metodologia estatisticamente válida descrita</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Assinado por profissional habilitado (farmacêutico, dermatologista)</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Produto testado na formulação final, não no ativo isolado</div></div>
+      <div class="div"></div>
+      <div class="ib danger"><strong>⛔ PROIBIDO para cosméticos:</strong> "Cura", "trata doença", "elimina permanentemente", "regenera tecido". Apenas medicamentos (RDC) podem usar linguagem terapêutica. Uso indevido pode levar a interdição e multa Anvisa.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">✍️ Boas Práticas de Redação de Claims</div>
+      <div class="ib ok"><strong>✅ Use:</strong><br>• "contribui para a aparência mais jovem"<br>• "auxilia na redução da visibilidade das linhas"<br>• "ajuda a uniformizar o tom da pele"<br>• "promove sensação de hidratação"<br>• "deixa a pele com aparência mais firme"<br>• "contribui para o aspecto mais saudável"</div>
+      <div class="ib warn" style="margin-top:8px"><strong>⛔ Evite:</strong><br>• "elimina rugas em X dias"<br>• "rejuvenescimento garantido"<br>• "resultado permanente"<br>• "efeito botox natural"<br>• "cura acne"<br>• "regenera células da pele"</div>
+      <div class="div"></div>
+      <div class="sh">Tabela de Equivalência de Linguagem</div>
+      <table><thead><tr><th>Claim proibido</th><th>Alternativa regulatória</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--danger)">Elimina rugas</td><td style="color:var(--success)">Reduz a visibilidade de linhas e rugas</td></tr>
+        <tr><td style="color:var(--danger)">Cura acne</td><td style="color:var(--success)">Auxilia no controle da oleosidade e aparência da pele</td></tr>
+        <tr><td style="color:var(--danger)">Regenera cabelos</td><td style="color:var(--success)">Contribui para a aparência de cabelos mais saudáveis</td></tr>
+        <tr><td style="color:var(--danger)">Clareia manchas definitivamente</td><td style="color:var(--success)">Auxilia na redução da visibilidade de manchas</td></tr>
+        <tr><td style="color:var(--danger)">Aumenta produção de colágeno</td><td style="color:var(--success)">Contribui para a aparência mais firme da pele</td></tr>
+      </tbody></table>
+      <div class="div"></div>
+      <div class="ib tip"><strong>Dica Derm.ethic:</strong> Todos os claims de comunicação (Instagram, embalagem, site) devem ser revisados pela Dra. Beatriz (Conteúdo Clínico) antes de publicação. Guardar comprovante de aprovação no dossiê do produto.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROTOCOLOS -->
+<div id="tt-prot" class="tc-panel">
+  <div class="g2" style="margin-bottom:16px">
+    <div class="card">
+      <div class="card-title">🌅 Rotina AM — Skincare Diurna</div>
+      <div class="ib tip">Sequência correta: do mais fino para o mais denso. Sempre finalizar com protetor solar — sem exceção.</div>
+      <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Limpeza facial suave</h4><p>Gel ou espuma sem SLS agressivo. Água morna. Não esfregar. Remover apenas sujeira e excesso de oleosidade — não "desnudar" a pele.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Tônico (opcional)</h4><p>Reequilibra pH após limpeza. Prepara a pele para absorção dos ativos seguintes. Aplicar com mãos ou algodão sem álcool.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Sérum de tratamento</h4><p>Vitamina C (AM), Niacinamida ou ácido hialurônico. Em pele levemente úmida para potencializar penetração. Aguardar 60–90s para absorver.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Hidratante</h4><p>Sela os ativos aplicados e restaura a barreira cutânea. Textura leve para pele oleosa, mais rica para pele seca. Massagear até absorção.</p></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-content"><h4>☀ Protetor Solar FPS 50+ — OBRIGATÓRIO</h4><p>Último passo, todos os dias, inclusive nublados e em ambientes fechados (exposição à luz UV indireta). Reaplicar a cada 2h em exposição direta.</p></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🌙 Rotina PM — Skincare Noturna</div>
+      <div class="ib info">À noite a pele está em modo de reparação — priorizar hidratação e ativos de tratamento mais intensos.</div>
+      <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Demaquilante / Óleo de limpeza</h4><p>Remove protetor solar, maquiagem e poluição. Essencial para que a segunda limpeza seja eficaz. Não pular esta etapa.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Limpeza dupla (double cleansing)</h4><p>Gel ou espuma após o óleo para limpeza real dos poros. Garante que nenhum resíduo de protetor solar ou maquiagem obstrua os poros.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Esfoliação 2–3x/semana (não na noite do retinol)</h4><p>AHA (ácido glicólico, lático — superficial), BHA (salicílico — poros), enzimático (suave). Aumentar frequência gradualmente.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Retinol ou sérum de tratamento</h4><p>Retinol exclusivamente noturno (fotossensibilizante). Iniciar 2x/semana e aumentar conforme tolerância. Pode causar descamação inicial — normal.</p></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Creme noturno rico + contorno dos olhos</h4><p>Mais oclusivo que o diurno. Foco em reparação da barreira e hidratação profunda enquanto dorme. Eye cream com peptídeos ou cafeína.</p></div></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">💆 Protocolo Capilar Completo</div>
+      <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Pré-shampoo (1x/semana)</h4><p>Óleo vegetal (coco, argan, rícino) ou máscara aplicada antes da lavagem. Protege as fibras do ressecamento causado pelo shampoo.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Shampoo — 2 lavagens</h4><p>1ª lavagem: remove sujeira grosseira. 2ª lavagem: limpeza efetiva. Focar no couro cabeludo com massagem circular de 2–3 min. Nunca nas pontas.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Condicionador — comprimentos</h4><p>Nunca na raiz (aumenta oleosidade). Deixar 3–5 min. Enxaguar bem com água fria — sela as cutículas e aumenta brilho.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Máscara de tratamento semanal</h4><p>Substituir o condicionador 1x/semana. Deixar 10–20 min com touca térmica para potencializar. Proteína ou hidratação conforme necessidade.</p></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Leave-in e proteção térmica</h4><p>Aplicar nos fios úmidos. Proteção térmica obrigatória antes de secador ou chapinha. Finalizar com sérum capilar para brilho e maciez.</p></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🏥 Orientações para Vendas em Farmácia — por Queixa</div>
+      <div class="ib info">Argumento técnico diferencia a Derm.ethic de marcas concorrentes e capacita o balconista a recomendar com confiança.</div>
+      <div class="step"><div class="step-num">🧴</div><div class="step-content"><h4>Pele oleosa + poros dilatados</h4><p>Indicar: Sérum Niacinamida 10% + Zinc. Argumentar: regula sebo, minimiza poros visíveis, uniformiza, não resseca. Uso AM + PM.</p></div></div>
+      <div class="step"><div class="step-num">☀</div><div class="step-content"><h4>Proteção e anti-aging preventivo</h4><p>Indicar: FPS 50+ + Vitamina C. Argumentar: o maior causador de envelhecimento precoce é o sol — protetor é anti-aging número 1.</p></div></div>
+      <div class="step"><div class="step-num">✨</div><div class="step-content"><h4>Manchas e hiperpigmentação</h4><p>Indicar: Sérum Vitamina C 15% + FPS 50+. Argumentar: sem proteção solar, nenhum clareador funciona — venda o combo.</p></div></div>
+      <div class="step"><div class="step-num">💧</div><div class="step-content"><h4>Pele seca e sensível</h4><p>Indicar: hidratante com ceramidas + ácido hialurônico. Evitar: ácidos, retinol e fragrâncias. Focar em reposição e barreira cutânea.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ANVISA -->
+<div id="tt-anvisa" class="tc-panel">
+  <div class="g2" style="margin-bottom:16px">
+    <div class="card">
+      <div class="card-title">🏛 Regulatório Anvisa — Visão Geral</div>
+      <div class="ib info"><strong>Principais normas:</strong> RDC 752/2022 (lista de ingredientes), RDC 07/2015 (claims), RDC 04/2014 (rotulagem), RDC 48/2013 (BPCS), IN 01/2012 (notificação Grau 1).</div>
+      <div class="div"></div>
+      <div class="sh">Grau 1 — Notificação (menor risco)</div>
+      <p style="font-size:12.5px;color:var(--t2);line-height:1.7;margin-bottom:10px">Notificação prévia obrigatória via DATAVISA. Pagamento de TAFE. Produto pode ser comercializado após confirmação do protocolo. Exemplos: shampoos, condicionadores, loções hidratantes, cremes faciais sem FPS, sabonetes, géis de limpeza, perfumes leves.</p>
+      <div class="sh">Grau 2 — Registro (maior risco / claims específicos)</div>
+      <p style="font-size:12.5px;color:var(--t2);line-height:1.7;margin-bottom:10px">Registro prévio obrigatório — produto NÃO pode ser vendido antes da aprovação. Prazo médio: 60–180 dias. Exemplos: protetor solar (qualquer FPS), anticaspa, clareador, alisante, antirrugas com claim comprovado, shampoo para queda capilar.</p>
+      <div class="div"></div>
+      <div class="sh">Rotulagem obrigatória (RDC 04/2014)</div>
+      <div class="checklist-item"><input type="checkbox"><div>Denominação do produto / função cosmética</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Nome e endereço do fabricante / importador</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>CNPJ e número do registro/notificação Anvisa</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Lista de ingredientes em INCI (ordem decrescente)</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Conteúdo líquido (ml, g ou un)</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Número do lote e data de fabricação</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Prazo de validade ou PAO (símbolo do pote aberto)</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Modo de usar e advertências quando necessário</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>País de fabricação</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">📊 Status Anvisa — Portfólio Atual</div>
+      <div id="anvisa-prod-list"></div>
+      <div class="div"></div>
+      <div class="card-title" style="font-size:14px;margin-top:4px">⏱ Cronograma Regulatório</div>
+      <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Sérum Niacinamida 10% (Grau 1)</h4><p>Iniciar notificação após recebimento dos laudos de estabilidade e microbiológico. Prazo estimado: 30 dias.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Shampoo Equilíbrio (Grau 1)</h4><p>Laudos em andamento. Notificação prevista para próximo mês após aprovação dos laudos.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Protetor Solar FPS 50+ (Grau 2)</h4><p>Laudo de FPS in vivo em andamento. Registro previsto para daqui 90 dias. Produto não pode ser vendido antes.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Sérum Vitamina C (Grau 1)</h4><p>Estabilidade crítica — estudo real necessário antes de notificar (produto instável). Prazo: 6 meses.</p></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">📂 Documentos do Dossiê Técnico — Checklist por Produto</div>
+    <table><thead><tr><th>Documento</th><th>Grau 1</th><th>Grau 2</th><th>Responsável</th></tr></thead>
+    <tbody>
+      <tr><td>Ficha técnica completa (fórmula, INCI, especificações)</td><td><span class="badge bg-green">✓ Obrigatório</span></td><td><span class="badge bg-green">✓ Obrigatório</span></td><td>Dra. Beatriz</td></tr>
+      <tr><td>Laudo de estabilidade acelerada (28 dias / 40°C)</td><td><span class="badge bg-green">✓ Obrigatório</span></td><td><span class="badge bg-green">✓ Obrigatório</span></td><td>LabCosm</td></tr>
+      <tr><td>Laudo microbiológico (challenge test)</td><td><span class="badge bg-green">✓ Obrigatório</span></td><td><span class="badge bg-green">✓ Obrigatório</span></td><td>LabCosm</td></tr>
+      <tr><td>Laudo de segurança (cosmetovigilância)</td><td><span class="badge bg-amber">Recomendado</span></td><td><span class="badge bg-green">✓ Obrigatório</span></td><td>Dra. Beatriz</td></tr>
+      <tr><td>Laudo de eficácia (claim específico)</td><td><span class="badge bg-gray">Não exigido</span></td><td><span class="badge bg-green">✓ Para claims</span></td><td>Laboratório externo</td></tr>
+      <tr><td>Laudo FPS in vivo (metodologia FDA/ISO)</td><td><span class="badge bg-gray">N/A</span></td><td><span class="badge bg-green">✓ Protetor solar</span></td><td>Lab especializado</td></tr>
+      <tr><td>Arte do rótulo aprovada (RDC 04/2014)</td><td><span class="badge bg-green">✓ Obrigatório</span></td><td><span class="badge bg-green">✓ Obrigatório</span></td><td>Studio Visual + RT</td></tr>
+    </tbody></table>
+  </div>
+</div>
+```
+
+  </div>
+</main>
+</div><!-- /wrap -->
+<div class="tcon" id="tcon"></div>
+<script src="js/db.js"></script>
+<script>
+renderSidebar('tecnico');
+
+const INGS=[
+{inci:‘Niacinamide’,nome:‘Niacinamida — Vitamina B3’,fun:‘Regulador de sebo, uniformizador de tom, anti-inflamatório, minimizador de poros, hidratante’,conc:‘2–10%’,ph:‘5,0–7,0’,orig:‘Sintética (grau farmacêutico USP)’,incomp:‘Ácido ascórbico em alta conc. pode formar complexo nicotinato (amarelamento) — pH < 4 ou > 7 piora o efeito’,seg:‘Muito seguro. Aprovado para todas as idades incluindo gestantes e lactantes. Raramente causa irritação.’,ref:‘CIR 2020, PCPC, RDC 752/2022, FDA GRAS’,claim:‘Redução visibilidade poros; controle oleosidade; uniformização do tom’},
+{inci:‘Ascorbic Acid’,nome:‘Ácido L-Ascórbico — Vitamina C’,fun:‘Antioxidante, clareador, estimulador de colágeno, fotoprotetor auxiliar, anti-inflamatório’,conc:‘5–20%’,ph:‘2,5–3,5’,orig:‘Natural (frutas cítricas) ou sintética — grau USP’,incomp:‘Instável em pH > 4,0; oxida rapidamente; incompatível com metais pesados. Embalagem amber/airless obrigatória.’,seg:‘Pode causar formigamento inicial (normal). Fotossensibilizante leve — uso AM + FPS obrigatório. Evitar em pele extremamente sensível.’,ref:‘CIR, FDA, SCCS, Anvisa RDC 752’,claim:‘Luminosidade; redução manchas; proteção antioxidante; aparência mais jovem’},
+{inci:‘Retinol’,nome:‘Retinol — Vitamina A1’,fun:‘Renovação celular, estimulador de colágeno, anti-aging, tratamento de acne e hiperpigmentação’,conc:‘0,025–1,0%’,ph:‘4,5–5,5’,orig:‘Sintética — grau cosmético ou farmacêutico’,incomp:‘Instável com luz UV, ácidos fortes, peróxidos e oxidantes. Embalagem opaca obrigatória. Não combinar com AHA/BHA.’,seg:‘CONTRAINDICADO em gestantes e lactantes. Fotossensibilizante — uso exclusivo PM. Iniciar com concentração baixa (0,025%) e aumentar gradualmente. Pode causar descamação e vermelhidão nas primeiras semanas.’,ref:‘CIR, SCCS 2022, Anvisa Nota Técnica 2023, AAD’,claim:‘Redução rugas e linhas finas; renovação celular; aparência mais jovem e uniforme’},
+{inci:‘Hyaluronic Acid’,nome:‘Ácido Hialurônico’,fun:‘Hidratação intensa, efeito preenchedor, umectante, filmogênico, protetor da barreira’,conc:‘0,1–2,0%’,ph:‘5,0–7,5’,orig:‘Fermentação bacteriana (Streptococcus equi) — vegan disponível’,incomp:‘Sensível a alta concentração de sais (salting-out). Compatível com a maioria dos ingredientes cosméticos.’,seg:‘Extremamente seguro. Aprovado para todas as faixas etárias. Zero contraindicações conhecidas.’,ref:‘CIR, EFSA, PCPC, ECHA’,claim:‘Hidratação intensa; aparência mais preenchida; pele mais macia e suave’},
+{inci:‘Salicylic Acid’,nome:‘Ácido Salicílico’,fun:‘Queratolítico, comedolítico, anti-inflamatório, antifúngico, antibacteriano suave’,conc:‘0,5–2,0% (leave-on cosmético)’,ph:‘3,0–4,0’,orig:‘Sintética ou extrato de casca de vidoeiro’,incomp:‘Precipita em pH alcalino. Incompatível com gelatinas e alguns polímeros.’,seg:‘Anvisa limita leave-on a 2%. Proibido para crianças < 3 anos. Evitar em gestantes. Pode ressecar — usar hidratante complementar.’,ref:‘Anvisa RDC 752/2022, SCCS, FDA OTC monograph’,claim:‘Auxilia no controle de acne; exfolia suavemente; melhora aparência de pele com imperfeições’},
+{inci:‘Glycerin’,nome:‘Glicerina’,fun:‘Umectante, plastificante, emoliente, potencializador de penetração’,conc:‘1–30%’,ph:‘Estável em ampla faixa (3–10)’,orig:‘Vegetal (subproduto do biodiesel ou saponificação) ou sintética’,incomp:‘Compatível com praticamente todos os ingredientes. Pode atrair umidade em excesso em ambientes secos.’,seg:‘Extremamente seguro. GRAS pelo FDA. Aprovado para todas as idades. Suave até para recém-nascidos.’,ref:‘CIR, FDA GRAS, PCPC, EFSA’,claim:‘Hidratação; maciez; suavidade; conforto cutâneo’},
+{inci:‘Panthenol’,nome:‘Pantenol — Pró-vitamina B5’,fun:‘Hidratante, emoliente, cicatrizante suave, anti-inflamatório, condicionador capilar’,conc:‘0,5–5,0%’,ph:‘4,0–7,5’,orig:‘Sintética (DL-Panthenol racêmico para cosmético; D-Panthenol mais ativo biologicamente)’,incomp:‘Geralmente compatível com a maioria dos sistemas cosméticos’,seg:‘Muito seguro. Excelente tolerabilidade. Raramente causa sensibilização. Aprovado para todas as idades.’,ref:‘CIR, PCPC, SCCS’,claim:‘Reparação da barreira; suavidade; hidratação; cabelos mais fortes e brilhantes’},
+{inci:‘Zinc PCA’,nome:‘Zinco PCA’,fun:‘Regulador de sebo, antibacteriano suave, anti-inflamatório, adstringente’,conc:‘0,5–2,0%’,ph:‘4,5–6,5’,orig:‘Sintética (sal de zinco do ácido pirrolidona carboxílico)’,incomp:‘Pode precipitar em pH > 7,0’,seg:‘Muito seguro. Sem contraindicações relevantes. Adequado para pele acneica e oleosa.’,ref:‘CIR, PCPC, Anvisa RDC 752’,claim:‘Controle de oleosidade; minimização de poros; pele menos brilhante’},
+{inci:‘Ceramide NP’,nome:‘Ceramida NP (Ceramida 3)’,fun:‘Restauração da barreira cutânea, retenção de hidratação, proteção contra irritantes externos’,conc:‘0,2–1,0%’,ph:‘4,5–6,5’,orig:‘Sintética (idêntica às ceramidas da pele humana)’,incomp:‘Estável na maioria das emulsões. Compatível com outros ceramídeos e ácido hialurônico.’,seg:‘Muito seguro e bem tolerado. Ideal para pele seca, sensível, com eczema ou dermatite.’,ref:‘CIR, EWG 1, AAD recomendado’,claim:‘Reparação da barreira; hidratação profunda; redução da sensibilidade; pele mais protegida’},
+{inci:‘Azelaic Acid’,nome:‘Ácido Azelaico’,fun:‘Antibacteriano, anti-inflamatório, queratolítico suave, inibidor de tirosinase (clareador)’,conc:‘5–10% (cosmético); até 20% (farmácia)’,ph:‘3,5–5,0’,orig:‘Fermentação de Pityrosporum ovale ou síntese química’,incomp:‘Compatível com a maioria dos sistemas. Pode causar precipitação em pH extremo.’,seg:‘Seguro durante a gestação em concentrações cosméticas (FDA Categoria B). Pode causar leve ardência inicial.’,ref:‘CIR, FDA, EMA, SCCS’,claim:‘Controle de acne; redução manchas pós-inflamatórias; rosácea; uniformização do tom’},
+{inci:‘Ferulic Acid’,nome:‘Ácido Ferúlico’,fun:‘Antioxidante potente, estabilizador da Vitamina C e E, fotoprotetor auxiliar’,conc:‘0,1–1,0%’,ph:‘2,5–4,0’,orig:‘Natural (farelo de arroz, trigo, milho)’,incomp:‘Compatível com Vitamina C e E — efeito sinérgico comprovado. Instável em pH alto.’,seg:‘Muito seguro. Pode escurecer em contato com luz — embalagem opaca recomendada.’,ref:‘CIR, Pinnell ST 2005 (J Invest Dermatol)’,claim:‘Antioxidante; fotoproteção auxiliar; potencializa Vitamina C’},
+{inci:‘Tocopherol’,nome:‘Vitamina E — Tocoferol’,fun:‘Antioxidante lipossolúvel, emoliente, cicatrizante, anti-inflamatório, estabilizador lipídico’,conc:‘0,1–1,0%’,ph:‘Estável em emulsões O/A e A/O’,orig:‘Natural (óleo de gérmen de trigo, girassol) ou sintética’,incomp:‘Pode oxidar em presença de metais pesados e luz UV. Compatível com Vitamina C e ácido ferúlico.’,seg:‘Muito seguro. Aprovado para todas as idades. Raramente: sensibilização em concentrações altas (> 5%).’,ref:‘CIR, FDA GRAS, EWG 1’,claim:‘Proteção antioxidante; emolência; suavidade; reparação’},
+];
+
+function rIng(q=’’){
+const list=INGS.filter(i=>i.inci.toLowerCase().includes(q.toLowerCase())||i.nome.toLowerCase().includes(q.toLowerCase()));
+document.getElementById(‘lista-ing’).innerHTML=list.map(i=>` <div onclick="showIng('${i.inci}')" style="padding:9px 10px;border-radius:7px;cursor:pointer;border:1px solid var(--border);margin-bottom:6px;transition:all .15s" onmouseover="this.style.cssText='padding:9px 10px;border-radius:7px;cursor:pointer;border:1px solid var(--p3);margin-bottom:6px;background:var(--s2)'" onmouseout="this.style.cssText='padding:9px 10px;border-radius:7px;cursor:pointer;border:1px solid var(--border);margin-bottom:6px'"> <div style="font-weight:500;font-size:12.5px;color:var(--p)">${i.inci}</div> <div style="font-size:11px;color:var(--muted)">${i.nome.split('—')[0].trim()}</div> </div>`).join(’’);
+}
+
+function showIng(inci){
+const i=INGS.find(x=>x.inci===inci);if(!i)return;
+document.getElementById(‘det-ing-wrap’).innerHTML=` <div class="card"> <div style="font-family:var(--fd);font-size:20px;font-weight:600;color:var(--p);margin-bottom:2px">${i.nome}</div> <div style="font-family:monospace;font-size:11px;color:var(--muted);margin-bottom:16px;background:var(--s2);padding:3px 8px;border-radius:4px;display:inline-block">${i.inci}</div> <div class="tf"><div class="tf-l">Função</div><div class="tf-v">${i.fun}</div></div> <div class="tf"><div class="tf-l">Concentração</div><div class="tf-v"><strong>${i.conc}</strong></div></div> <div class="tf"><div class="tf-l">pH ideal</div><div class="tf-v">${i.ph}</div></div> <div class="tf"><div class="tf-l">Origem</div><div class="tf-v">${i.orig}</div></div> <div class="tf"><div class="tf-l">Claims possíveis</div><div class="tf-v" style="color:var(--success)">${i.claim}</div></div> <div class="tf"><div class="tf-l">Incompatibilidades</div><div class="tf-v" style="color:var(--warning)">${i.incomp}</div></div> <div class="tf"><div class="tf-l">Segurança</div><div class="tf-v">${i.seg}</div></div> <div class="tf"><div class="tf-l">Referências</div><div class="tf-v" style="font-size:11px;color:var(--muted)">${i.ref}</div></div> </div>`;
+}
+
+function buildAnvisaList(){
+const db=getDB();
+const el=document.getElementById(‘anvisa-prod-list’);
+if(!db.produtos.length){el.innerHTML=’<div class="ib tip">Nenhum produto cadastrado.</div>’;return;}
+const STATUS={pendente:[‘pend’,‘⏳’],em_processo:[‘pend’,‘📋’],registrado:[‘reg’,‘✅’],vencido:[‘danger’,‘⚠️’]};
+el.innerHTML=db.produtos.map(p=>{const[cls,ic]=STATUS[p.sanv]||[‘pend’,’—’];return` <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)"> <div><div style="font-weight:500;font-size:12.5px">${p.nome}</div> <div style="font-size:11px;color:var(--muted)">${p.grau?.replace('_',' ')||'—'} ${p.num_anv?'· Nº '+p.num_anv:''}</div></div> <span class="badge bg-${cls==='reg'?'green':cls==='danger'?'red':'amber'}">${ic} ${p.sanv?.replace('_',' ')}</span> </div>`;}).join(’’);
+}
+
+rIng();buildAnvisaList();
+</script>
+
+</body>
+</html>
