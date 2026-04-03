@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derm.ethic — Terceirizados</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="wrap">
+<div id="sidebar-container"></div>
+<main class="main">
+  <div class="page-hdr"><div><div class="page-title">Terceirizados & Parceiros</div><div class="page-sub">Gestão de indústria, gráfica, marketing, equipe técnica e logística</div></div><button class="btn btn-p" onclick="openM('m-te')">+ Novo Parceiro</button></div>
+  <div class="page-body">
+    <div class="tabs">
+      <div class="tab active" onclick="stab('tt','lista',this)">📋 Lista</div>
+      <div class="tab" onclick="stab('tt','gestao',this)">🔄 Gestão de Contratos</div>
+      <div class="tab" onclick="stab('tt','sla',this)">📊 SLA & Performance</div>
+      <div class="tab" onclick="stab('tt','onboarding',this)">🚀 Onboarding</div>
+    </div>
+
+```
+<div id="tt-lista" class="tc-panel active">
+  <div class="sbar">
+    <div class="sw-wrap"><span class="sw-ic">🔍</span><input class="si" id="q-te" type="text" placeholder="Buscar parceiros..." oninput="rTe()"></div>
+    <select class="fs" id="fil-te" onchange="rTe()" style="width:160px"><option value="">Todos os Tipos</option><option value="industria">Indústria</option><option value="embalagens">Embalagens</option><option value="grafica">Gráfica</option><option value="marketing">Marketing</option><option value="tecnico">Técnico</option><option value="logistica">Logística</option><option value="juridico">Jurídico</option></select>
+  </div>
+  <div class="card">
+    <div class="tc" id="tc-te"><table><thead><tr><th>Empresa</th><th>Tipo</th><th>Serviço</th><th>Contato</th><th>Valor</th><th>Status</th><th>Ações</th></tr></thead><tbody id="tb-te"></tbody></table></div>
+    <div id="emp-te" class="empty"><div class="empty-icon">🤝</div><h3>Nenhum parceiro cadastrado</h3><p>Cadastre indústrias, gráficas, marketing e demais terceirizados.</p></div>
+  </div>
+</div>
+
+<div id="tt-gestao" class="tc-panel">
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">📄 Gestão de Contratos Terceirizados</div>
+      <div class="ib tip"><strong>Princípio:</strong> Todo parceiro com relação recorrente deve ter contrato escrito ou, no mínimo, proposta comercial assinada.</div>
+      <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Definição do Escopo</h4><p>Antes de contratar: descrever com precisão o serviço esperado, entregáveis, formato de entrega, frequência e critérios de qualidade aceitáveis.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Proposta e Negociação</h4><p>Pedir proposta formal com: preço, prazo, condições de reajuste, política de revisões e cláusula de confidencialidade (NDA para dados de fórmula).</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Assinatura e Cadastro</h4><p>Assinar contrato ou proposta. Cadastrar no sistema com todos os dados. Arquivar documentação (Google Drive ou pasta física).</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Execução e Acompanhamento</h4><p>Monitorar entregas vs. escopo contratado. Registrar ocorrências (atrasos, retrabalhos, solicitações extras) para embasar renegociações.</p></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Avaliação Semestral</h4><p>Revisar performance: qualidade, prazo, custo e relacionamento. Decidir: renovar, renegociar ou substituir. Documentar avaliação.</p></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🔒 Proteção de Informações Confidenciais</div>
+      <div class="ib danger"><strong>Crítico:</strong> Fórmulas, fornecedores e processos produtivos são ativos estratégicos. Todos os terceirizados que tiverem acesso devem assinar NDA (Acordo de Confidencialidade).</div>
+      <div class="sh" style="margin-top:14px">O que o NDA deve cobrir:</div>
+      <div class="checklist-item"><input type="checkbox"><div>Fórmulas e listas INCI de produtos</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Lista e condições com fornecedores</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Dados de clientes e estratégias comerciais</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Projetos de novos produtos em desenvolvimento</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Resultados financeiros e projeções</div></div>
+      <div class="div"></div>
+      <div class="ib info">Para parcerias de maior valor ou longa duração, consultar o Dr. André Costa (jurídico) para elaborar contrato formal com cláusulas de penalidade.</div>
+    </div>
+  </div>
+</div>
+
+<div id="tt-sla" class="tc-panel">
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-title">📊 SLA e Indicadores por Tipo de Parceiro</div>
+    <table><thead><tr><th>Parceiro</th><th>SLA Principal</th><th>Meta</th><th>Alerta</th><th>Ação se falha</th></tr></thead>
+    <tbody>
+      <tr><td><strong>LabCosm (Indústria)</strong></td><td>Entrega de lote no prazo</td><td>100% pontual</td><td>Atraso > 2 dias</td><td>Notificação formal + revisão de contrato</td></tr>
+      <tr><td><strong>Studio Visual (Marketing)</strong></td><td>Entrega de arte em 5 dias úteis</td><td>95% no prazo</td><td>Atraso > 1 dia</td><td>Reunião de alinhamento + ajuste de briefing</td></tr>
+      <tr><td><strong>Dra. Beatriz (Técnico)</strong></td><td>Laudo técnico em 10 dias úteis</td><td>100% no prazo</td><td>Atraso > 3 dias</td><td>Contato direto + reprogramação</td></tr>
+      <tr><td><strong>LogiBeauty (Logística)</strong></td><td>Entrega ao cliente em 3–5 dias</td><td>95% no prazo</td><td>Atraso > 2 dias</td><td>Verificar rota + comunicar cliente</td></tr>
+      <tr><td><strong>Gráfica Catarinense</strong></td><td>Entrega de rótulos em 12 dias</td><td>100% sem defeitos</td><td>Qualidade visual</td><td>Solicitação de reimpressão sem custo</td></tr>
+    </tbody></table>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">📈 Reunião Mensal de Performance</div>
+      <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Revisar entregas do mês</h4><p>Comparar entregáveis previstos vs. realizados. Registrar variações e justificativas.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Avaliar qualidade</h4><p>Verificar conformidade dos entregáveis com os critérios de qualidade do contrato.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Alinhamento estratégico</h4><p>Apresentar prioridades do próximo mês, novos projetos e ajustes de escopo.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Registrar ata</h4><p>Documentar decisões, próximos passos e responsáveis por e-mail após a reunião.</p></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">⚠️ Critérios para Substituição de Parceiro</div>
+      <div class="ib warn">Iniciar processo de substituição se 2 ou mais critérios abaixo forem atingidos em um trimestre:</div>
+      <div class="checklist-item"><input type="checkbox"><div>3 ou mais entregas com atraso superior ao SLA</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Qualidade reprovada em mais de 2 entregas consecutivas</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Reajuste de preço acima de 15% sem justificativa</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Falha de comunicação recorrente sem resolução</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Violação de confidencialidade (substituição imediata)</div></div>
+    </div>
+  </div>
+</div>
+
+<div id="tt-onboarding" class="tc-panel">
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">🚀 Checklist de Onboarding de Novo Parceiro</div>
+      <div class="sh">Antes de Assinar</div>
+      <div class="checklist-item"><input type="checkbox"><div>Verificar CNPJ e regularidade fiscal</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Verificar registros e alvarás da atividade específica</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Verificar referências de outros clientes (mínimo 2)</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Solicitar portfólio ou amostras de trabalho</div></div>
+      <div class="div"></div>
+      <div class="sh">Na Assinatura</div>
+      <div class="checklist-item"><input type="checkbox"><div>Proposta comercial assinada com escopo detalhado</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>NDA assinado para parceiros com acesso a fórmulas</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Dados bancários para pagamento confirmados</div></div>
+      <div class="div"></div>
+      <div class="sh">Após Assinatura</div>
+      <div class="checklist-item"><input type="checkbox"><div>Cadastrar no sistema com todos os dados</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Enviar brief completo do primeiro projeto</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Apresentar guidelines e padrão de comunicação da marca</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Agendar reunião de alinhamento inicial</div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">📦 Briefing Padrão — Parceiro de Produção (Indústria)</div>
+      <div class="ib info">Enviar sempre que iniciar novo lote de produção com o LabCosm ou qualquer indústria terceirizada.</div>
+      <div style="background:var(--s2);padding:12px;border-radius:7px;font-size:12px;line-height:1.8">
+        <strong>ORDEM DE PRODUÇÃO — Derm.ethic</strong><br>
+        Data: [data]<br>
+        Produto: [nome]<br>
+        Quantidade: [un]<br>
+        Lote nº: [número]<br>
+        Validade: [data de validade calculada]<br>
+        Fórmula: [referência da ficha técnica]<br>
+        Embalagem: [tipo, cor, volume]<br>
+        Rótulo: [versão do arquivo e onde buscar]<br>
+        Prazo de entrega: [data]<br>
+        Observações: [tempertura, pH alvo, etc.]<br>
+        Responsável Derm.ethic: [nome]<br>
+        Contato: [tel/email]
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</main>
+</div><!-- /wrap -->
+
+<div class="mo" id="m-te">
+  <div class="modal">
+    <div class="mhdr"><div class="mtitle">Novo Parceiro Terceirizado</div><button class="mclose" onclick="closeM('m-te')">✕</button></div>
+    <div class="mbody">
+      <input type="hidden" id="te-id">
+      <div class="fr"><div class="fg"><label class="flbl">Empresa / Profissional</label><input type="text" class="fi" id="te-nome"></div><div class="fg"><label class="flbl">Tipo</label><select class="fs" id="te-tipo"><option value="industria">Indústria</option><option value="embalagens">Embalagens</option><option value="grafica">Gráfica</option><option value="marketing">Marketing</option><option value="tecnico">Técnico / P&D</option><option value="juridico">Jurídico</option><option value="logistica">Logística</option><option value="outros">Outros</option></select></div></div>
+      <div class="fg"><label class="flbl">Serviço Prestado</label><input type="text" class="fi" id="te-serv"></div>
+      <div class="fr"><div class="fg"><label class="flbl">CNPJ</label><input type="text" class="fi" id="te-cnpj"></div><div class="fg"><label class="flbl">Contato</label><input type="text" class="fi" id="te-cont"></div></div>
+      <div class="fr"><div class="fg"><label class="flbl">Telefone</label><input type="text" class="fi" id="te-tel"></div><div class="fg"><label class="flbl">E-mail</label><input type="email" class="fi" id="te-email"></div></div>
+      <div class="fr"><div class="fg"><label class="flbl">Valor do Contrato</label><input type="text" class="fi" id="te-valor"></div><div class="fg"><label class="flbl">Status</label><select class="fs" id="te-status"><option value="ativo">Ativo</option><option value="negociacao">Em Negociação</option><option value="suspenso">Suspenso</option><option value="encerrado">Encerrado</option></select></div></div>
+      <div class="fg"><label class="flbl">Observações</label><textarea class="ft" id="te-obs"></textarea></div>
+    </div>
+    <div class="mfoot"><button class="btn btn-o" onclick="closeM('m-te')">Cancelar</button><button class="btn btn-p" onclick="saveTe()">💾 Salvar</button></div>
+  </div>
+</div>
+
+<div class="tcon" id="tcon"></div>
+<script src="js/db.js"></script>
+<script>
+renderSidebar('terceirizados');
+const TIPO_LBL={industria:"🏭 Indústria",embalagens:"📦 Embalagens",grafica:"🖨 Gráfica",marketing:"📣 Marketing",tecnico:"🔬 Técnico",juridico:"⚖ Jurídico",logistica:"🚚 Logística",outros:"Outros"};
+function rTe(){
+  const db=getDB();const q=(document.getElementById('q-te')?.value||"").toLowerCase();const ft=document.getElementById('fil-te').value;
+  let list=db.terceirizados.filter(t=>(t.nome?.toLowerCase().includes(q)||t.serv?.toLowerCase().includes(q))&&(!ft||t.tipo===ft));
+  const tb=document.getElementById('tb-te'),emp=document.getElementById('emp-te'),tc=document.getElementById('tc-te');
+  if(!list.length){tb.innerHTML="";emp.style.display="block";tc.style.display="none";}
+  else{emp.style.display="none";tc.style.display="block";
+    tb.innerHTML=list.map(t=>`<tr><td><strong>${t.nome}</strong></td><td><span class="badge bg-blue">${TIPO_LBL[t.tipo]||t.tipo}</span></td><td style="font-size:12px">${t.serv||"—"}</td><td>${t.cont||"—"}<br><small>${t.tel||""}</small></td><td style="font-size:12px">${t.valor||"—"}</td><td>${badge(t.status)}</td><td><div style="display:flex;gap:4px"><button class="btn-ic" onclick="editTe('${t.id}')">✏️</button><button class="btn-ic" onclick="delTe('${t.id}')" style="border-color:var(--danger);color:var(--danger)">🗑</button></div></td></tr>`).join("");
+  }
+}
+function saveTe(){
+  const id=document.getElementById('te-id').value,db=getDB();
+  const o={id:id||genID(),nome:document.getElementById('te-nome').value.trim(),tipo:document.getElementById('te-tipo').value,serv:document.getElementById('te-serv').value.trim(),cnpj:document.getElementById('te-cnpj').value.trim(),cont:document.getElementById('te-cont').value.trim(),tel:document.getElementById('te-tel').value.trim(),email:document.getElementById('te-email').value.trim(),valor:document.getElementById('te-valor').value.trim(),status:document.getElementById('te-status').value,obs:document.getElementById('te-obs').value.trim()};
+  if(!o.nome){toast('Nome obrigatório','e');return;}
+  if(id){const i=db.terceirizados.findIndex(x=>x.id===id);if(i>=0)db.terceirizados[i]=o;}else db.terceirizados.push(o);
+  saveDB(db);closeM('m-te');rTe();toast('Parceiro salvo!','s');document.getElementById('te-id').value='';
+}
+function editTe(id){const db=getDB(),t=db.terceirizados.find(x=>x.id===id);if(!t)return;document.getElementById('te-id').value=t.id;['nome','serv','cnpj','cont','tel','email','valor','obs'].forEach(k=>{const el=document.getElementById('te-'+k);if(el)el.value=t[k]||'';});document.getElementById('te-tipo').value=t.tipo;document.getElementById('te-status').value=t.status;openM('m-te');}
+function delTe(id){if(!confirm('Excluir?'))return;const db=getDB();db.terceirizados=db.terceirizados.filter(t=>t.id!==id);saveDB(db);rTe();toast('Removido','s');}
+rTe();
+</script>
+</body>
+</html>
