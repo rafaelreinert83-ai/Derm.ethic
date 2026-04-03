@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derm.ethic — Marketing</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="wrap">
+<div id="sidebar-container"></div>
+<main class="main">
+  <div class="page-hdr"><div><div class="page-title">Marketing & Crescimento</div><div class="page-sub">Personas, jornada de lançamento, campanhas, canais digitais e comunidade</div></div></div>
+  <div class="page-body">
+    <div class="tabs">
+      <div class="tab active" onclick="stab('mt','personas',this)">👤 Personas</div>
+      <div class="tab" onclick="stab('mt','lancamento',this)">🚀 Jornada de Lançamento</div>
+      <div class="tab" onclick="stab('mt','campanhas',this)">📣 Campanhas</div>
+      <div class="tab" onclick="stab('mt','canais',this)">📱 Canais & Comunidade</div>
+      <div class="tab" onclick="stab('mt','marca',this)">🎨 Identidade de Marca</div>
+    </div>
+
+```
+<!-- PERSONAS -->
+<div id="mt-personas" class="tc-panel active">
+  <div class="sbar"><button class="btn btn-p" onclick="openM('m-per')">+ Nova Persona</button>
+    <div class="ib info" style="margin:0;flex:1">Personas são representações do cliente ideal. Use-as para direcionar conteúdo, linguagem e canais de comunicação.</div>
+  </div>
+  <div class="g3" id="grid-per"></div>
+  <div id="emp-per" class="empty"><div class="empty-icon">👤</div><h3>Nenhuma persona</h3><p>Defina o público-alvo dos seus produtos.</p></div>
+</div>
+
+<!-- LANÇAMENTO -->
+<div id="mt-lancamento" class="tc-panel">
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-title">🚀 Jornada Completa de Lançamento de Produto Cosmético</div>
+    <div class="ib tip"><strong>Princípio:</strong> Um lançamento bem executado começa 6 semanas antes do Dia D. Cada fase tem responsáveis, entregáveis e métricas específicas.</div>
+  </div>
+  <div class="kanban">
+    <div class="k-col"><div class="k-title" style="color:#3A8F5A">① Pré-lançamento (6–4 sem. antes)</div>
+      <div class="k-item"><strong>Pesquisa de mercado</strong>Benchmarking de concorrentes, análise de preço de categoria, pesquisa de tendência, mapeamento de lacunas.</div>
+      <div class="k-item"><strong>Formulação finalizada</strong>Fórmula aprovada, laudos emitidos, Anvisa encaminhado, embalagem aprovada.</div>
+      <div class="k-item"><strong>Branding do produto</strong>Nome, posicionamento, claims, arte de embalagem, linha de comunicação.</div>
+      <div class="k-item"><strong>Landing page / link</strong>Página de captura para lista VIP (WhatsApp e e-mail) com benefício exclusivo.</div>
+      <div class="k-item"><strong>Kit influenciador</strong>Amostras + card de benefícios + instruções de uso para envio com embargo até o Dia D.</div>
+    </div>
+    <div class="k-col"><div class="k-title" style="color:#C8A96E">② Aquecimento (4–2 sem. antes)</div>
+      <div class="k-item"><strong>Teaser nas redes</strong>"Algo está chegando" — bastidores de formulação, embalagem desfocada, depoimento de testadora.</div>
+      <div class="k-item"><strong>Educação de ingredientes</strong>Conteúdo sobre o ativo principal — cria antecipação e autoridade técnica.</div>
+      <div class="k-item"><strong>Construção de lista VIP</strong>Stories com link de captura. Meta: 200+ contatos na lista antes do lançamento.</div>
+      <div class="k-item"><strong>Ativação de parceiros B2B</strong>Informar farmácias e salões sobre o lançamento — preparar estoque e material de PDV.</div>
+    </div>
+    <div class="k-col"><div class="k-title" style="color:#D4920A">③ Dia D — Lançamento</div>
+      <div class="k-item"><strong>Comunicação simultânea</strong>Publicar no Instagram, enviar para lista VIP (WhatsApp + e-mail) e liberar influencers — tudo no mesmo horário (10h ou 19h).</div>
+      <div class="k-item"><strong>Live de lançamento</strong>Apresentação ao vivo com demonstração real, Q&A e oferta exclusiva para quem está assistindo.</div>
+      <div class="k-item"><strong>Oferta inaugural</strong>Desconto de 15% ou brinde exclusivo por 48h. Gera urgência e conversão imediata.</div>
+      <div class="k-item"><strong>Ativação PDV</strong>Material de ponto de venda instalado nas farmácias e salões parceiros no Dia D.</div>
+    </div>
+    <div class="k-col"><div class="k-title" style="color:#B94040">④ Pós-lançamento (D+1 a D+30)</div>
+      <div class="k-item"><strong>Coleta de depoimentos</strong>Contatar compradores no D+7 para feedback. Pedir review e foto (UGC). Usar como prova social.</div>
+      <div class="k-item"><strong>Análise D+15</strong>Checar: vendas, taxa de abertura de e-mail, engajamento, devoluções, SAC. Ajustar estratégia.</div>
+      <div class="k-item"><strong>Retargeting</strong>Anúncio para quem visitou a página mas não comprou. Usar depoimentos reais e before/after.</div>
+      <div class="k-item"><strong>Cross-sell</strong>Recomendar produto complementar para quem comprou. "Quem comprou o Sérum C também usa..."</div>
+    </div>
+    <div class="k-col"><div class="k-title" style="color:#3A6E8F">⑤ Consolidação (D+30 em diante)</div>
+      <div class="k-item"><strong>Análise de resultados completa</strong>ROI da campanha, ticket médio, custo de aquisição de cliente (CAC), NPS dos primeiros compradores.</div>
+      <div class="k-item"><strong>Expansão B2B</strong>Prospectar novos distribuidores e redes de farmácias com dados reais de sell-out do lançamento.</div>
+      <div class="k-item"><strong>Kits e combos</strong>Criar combo com outro produto da linha para aumentar ticket médio e cross-sell.</div>
+      <div class="k-item"><strong>Feedback para P&D</strong>Documentar sugestões de melhoria dos clientes para versão 2.0 do produto.</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <div class="card-title">📅 Calendário Editorial Sugerido — Semana Padrão</div>
+    <table><thead><tr><th>Dia</th><th>Formato</th><th>Tema</th><th>CTA sugerido</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Segunda</strong></td><td>Carrossel educativo</td><td>Ingrediente da semana / Dica técnica</td><td>"Salve para usar" / "Compartilhe"</td></tr>
+      <tr><td><strong>Terça</strong></td><td>Story + enquete</td><td>Rotina / Hábito de cuidado</td><td>Engajamento / Coleta de dúvidas</td></tr>
+      <tr><td><strong>Quarta</strong></td><td>Reels (30–60s)</td><td>Trend de beleza / Tutorial / Before & After</td><td>"Siga para mais dicas" / Link bio</td></tr>
+      <tr><td><strong>Quinta</strong></td><td>Post estático</td><td>Produto em destaque + claim técnico</td><td>"Link na bio" / "Disponível em..."</td></tr>
+      <tr><td><strong>Sexta</strong></td><td>Story pessoal / bastidores</td><td>Por trás da Derm.ethic / valores da marca</td><td>Conexão e humanização da marca</td></tr>
+      <tr><td><strong>Sábado</strong></td><td>UGC / depoimento</td><td>Resultado real de cliente ou parceiro</td><td>"Prova social" / Compartilhe sua experiência</td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<!-- CAMPANHAS -->
+<div id="mt-campanhas" class="tc-panel">
+  <div class="sbar"><button class="btn btn-p" onclick="openM('m-camp')">+ Nova Campanha</button></div>
+  <div class="card"><div class="tc"><table><thead><tr><th>Campanha</th><th>Produto</th><th>Canal</th><th>Período</th><th>Orçamento</th><th>Objetivo</th><th>Status</th><th>Del</th></tr></thead><tbody id="tb-camp"></tbody></table></div>
+    <div id="emp-camp" class="empty"><div class="empty-icon">📣</div><h3>Nenhuma campanha</h3><p>Planeje e gerencie suas campanhas de marketing.</p></div>
+  </div>
+</div>
+
+<!-- CANAIS -->
+<div id="mt-canais" class="tc-panel">
+  <div class="g2" style="margin-bottom:16px">
+    <div class="card">
+      <div class="card-title">📱 Estratégia por Canal Digital</div>
+      <div class="step"><div class="step-num">📸</div><div class="step-content"><h4>Instagram — Canal principal</h4><p><strong>Frequência:</strong> 5–7 posts/semana + Stories diários. <strong>Conteúdo:</strong> educativo (50%), produto (30%), bastidores e humanização (20%). <strong>Foco:</strong> Reels para alcance, carrosséis para autoridade, Stories para engajamento.</p></div></div>
+      <div class="step"><div class="step-num">💚</div><div class="step-content"><h4>WhatsApp Business</h4><p><strong>Uso:</strong> Lista VIP para lançamentos, reposição de clientes B2B e atendimento. <strong>Regra:</strong> máximo 2 mensagens por semana para a lista. Sempre com opt-out disponível. Catálogo digital sempre atualizado.</p></div></div>
+      <div class="step"><div class="step-num">📧</div><div class="step-content"><h4>E-mail Marketing</h4><p><strong>Frequência:</strong> Newsletter quinzenal (B2C) + mensal (B2B). <strong>Conteúdo:</strong> artigo técnico + novidade de produto + oferta exclusiva para assinantes. Taxa de abertura meta: > 28%.</p></div></div>
+      <div class="step"><div class="step-num">🎵</div><div class="step-content"><h4>TikTok</h4><p><strong>Estratégia:</strong> Trends de skincare adaptadas + "o que os dermatologistas não te contam" + demonstrações de produto em 30s. Potencial de viralização para público 18–35 anos.</p></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🌐 Construção de Comunidade Derm.ethic</div>
+      <div class="ib ok"><strong>Filosofia:</strong> Eduque para vender. A autoridade técnica gera confiança, e confiança gera venda recorrente e defensores espontâneos da marca.</div>
+      <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Comunidade Científica</h4><p>Parceria com dermatologistas, farmacêuticos e cosmetólogos para validação técnica. Citar especialistas no conteúdo confere credibilidade que marcas maiores não conseguem facilmente.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Programa Embaixadores</h4><p>Cabeleireiros e esteticistas que usam e recomendam com desconto especial. Meta: 20 embaixadores ativos em SC até o fim do ano.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Clube Derm.ethic (VIP)</h4><p>Lista exclusiva com: acesso antecipado a lançamentos, desconto progressivo por fidelidade e brindes surpresa. Criar lista no WhatsApp.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Presença Local SC</h4><p>Eventos de beleza, feiras de saúde e clínicas dermatológicas em Itajaí, Balneário Camboriú e Florianópolis — presença física gera credibilidade regional e fidelização geográfica.</p></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">📊 KPIs de Marketing para Monitorar</div>
+    <table><thead><tr><th>Indicador</th><th>Canal</th><th>Meta Derm.ethic</th><th>Frequência de Avaliação</th></tr></thead>
+    <tbody>
+      <tr><td>Taxa de engajamento</td><td>Instagram</td><td>> 3,5%</td><td>Semanal</td></tr>
+      <tr><td>Alcance de Reels</td><td>Instagram</td><td>3x mais que seguidores</td><td>Por publicação</td></tr>
+      <tr><td>Novos seguidores</td><td>Instagram</td><td>+200/mês</td><td>Mensal</td></tr>
+      <tr><td>Taxa de abertura newsletter</td><td>E-mail</td><td>> 28%</td><td>Por disparo</td></tr>
+      <tr><td>CTR (clique no link)</td><td>E-mail</td><td>> 4%</td><td>Por disparo</td></tr>
+      <tr><td>ROI de campanhas pagas</td><td>Meta/Google Ads</td><td>> 3x ROAS</td><td>Por campanha</td></tr>
+      <tr><td>CAC (custo aquisição cliente)</td><td>Todos</td><td>< R$ 45 B2C / < R$ 150 B2B</td><td>Mensal</td></tr>
+      <tr><td>Conversão lista VIP → venda</td><td>WhatsApp</td><td>> 15%</td><td>Por lançamento</td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<!-- MARCA -->
+<div id="mt-marca" class="tc-panel">
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">🎨 Identidade Visual Derm.ethic</div>
+      <div class="ib info"><strong>Princípio:</strong> A Derm.ethic posiciona-se como marca de dermocosméticos ética, científica e acessível. O visual reflete sofisticação discreta e confiança técnica.</div>
+      <div class="sh">Paleta de Cores</div>
+      <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+        <div style="text-align:center"><div style="width:52px;height:52px;border-radius:8px;background:#1A3C2E;border:1px solid var(--border)"></div><div style="font-size:10px;margin-top:4px;color:var(--muted)">Verde Floresta<br>#1A3C2E</div></div>
+        <div style="text-align:center"><div style="width:52px;height:52px;border-radius:8px;background:#C8A96E;border:1px solid var(--border)"></div><div style="font-size:10px;margin-top:4px;color:var(--muted)">Champagne<br>#C8A96E</div></div>
+        <div style="text-align:center"><div style="width:52px;height:52px;border-radius:8px;background:#F5F4F0;border:1px solid var(--border)"></div><div style="font-size:10px;margin-top:4px;color:var(--muted)">Off-White<br>#F5F4F0</div></div>
+        <div style="text-align:center"><div style="width:52px;height:52px;border-radius:8px;background:#8AB5A3;border:1px solid var(--border)"></div><div style="font-size:10px;margin-top:4px;color:var(--muted)">Sage<br>#8AB5A3</div></div>
+      </div>
+      <div class="sh">Tipografia</div>
+      <div class="tf"><div class="tf-l">Display / Títulos</div><div class="tf-v" style="font-family:'Cormorant Garamond',serif;font-size:16px">Cormorant Garamond</div></div>
+      <div class="tf"><div class="tf-l">Corpo / UI</div><div class="tf-v">Jost (300, 400, 500, 600)</div></div>
+      <div class="div"></div>
+      <div class="sh">Tom de Voz</div>
+      <div class="ib ok"><strong>Técnico mas acessível:</strong> Explicar a ciência de forma que qualquer pessoa entenda. Nunca arrogante, sempre educativo e empático.</div>
+      <div class="ib ok"><strong>Honesto:</strong> Nunca prometer além do que a ciência e a lei permitem. A ética está no nome da marca.</div>
+      <div class="ib ok"><strong>Local com orgulho:</strong> Marca catarinense, produzida em SC, com ingredientes de qualidade global.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">📸 Diretrizes para Criação de Conteúdo</div>
+      <div class="sh">O que fazer sempre ✅</div>
+      <div class="checklist-item"><input type="checkbox"><div>Mostrar ingredientes e citar concentrações reais</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Usar linguagem de claims aprovada pela Dra. Beatriz</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Incluir disclaimer quando mostrar resultados ("resultado individual pode variar")</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Citar referências científicas quando possível (PubMed, CIR)</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Mostrar textura, aplicação e experiência sensorial do produto</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Usar paleta de cores da marca em todos os artes</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Solicitar aprovação do Studio Visual antes de publicar peças institucionais</div></div>
+      <div class="div"></div>
+      <div class="sh">O que nunca fazer ⛔</div>
+      <div class="checklist-item"><input type="checkbox"><div>Claims terapêuticos ("cura", "trata", "elimina definitivamente")</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Antes/depois sem disclaimer adequado</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Mencionar concorrente diretamente de forma negativa</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Publicar foto de cliente sem autorização expressa por escrito</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Dar desconto superior a 30% sem alinhamento com gestão (desvaloriza a marca)</div></div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</main>
+</div><!-- /wrap -->
+
+<!-- MODAL PERSONA -->
+
+<div class="mo" id="m-per"><div class="modal"><div class="mhdr"><div class="mtitle">Nova Persona</div><button class="mclose" onclick="closeM('m-per')">✕</button></div>
+  <div class="mbody">
+    <input type="hidden" id="per-id">
+    <div class="fr"><div class="fg"><label class="flbl">Nome da Persona</label><input type="text" class="fi" id="per-nome" placeholder="Ex: Ana — A Profissional Consciente"></div><div class="fg"><label class="flbl">Emoji</label><input type="text" class="fi" id="per-emoji" maxlength="4" placeholder="👩‍💼"></div></div>
+    <div class="fr"><div class="fg"><label class="flbl">Faixa de Idade</label><input type="text" class="fi" id="per-idade" placeholder="28–38 anos"></div><div class="fg"><label class="flbl">Renda Mensal</label><input type="text" class="fi" id="per-renda" placeholder="R$ 5.000–10.000"></div></div>
+    <div class="fg"><label class="flbl">Perfil e Estilo de Vida</label><textarea class="ft" id="per-perfil" placeholder="Quem é essa pessoa? Onde vive, trabalha, o que valoriza..."></textarea></div>
+    <div class="fg"><label class="flbl">Dores e Necessidades (pele / cabelo)</label><textarea class="ft" id="per-dores" placeholder="Problemas que a persona quer resolver com cosméticos..."></textarea></div>
+    <div class="fg"><label class="flbl">Onde consome conteúdo e compra</label><input type="text" class="fi" id="per-canais" placeholder="Instagram, TikTok, farmácias, indicação médica..."></div>
+    <div class="fg"><label class="flbl">Produtos Derm.ethic indicados</label><input type="text" class="fi" id="per-prods" placeholder="Sérum C, FPS 50+, Shampoo..."></div>
+  </div>
+  <div class="mfoot"><button class="btn btn-o" onclick="closeM('m-per')">Cancelar</button><button class="btn btn-p" onclick="savePer()">💾 Salvar</button></div>
+</div></div>
+
+<!-- MODAL CAMPANHA -->
+
+<div class="mo" id="m-camp"><div class="modal"><div class="mhdr"><div class="mtitle">Nova Campanha</div><button class="mclose" onclick="closeM('m-camp')">✕</button></div>
+  <div class="mbody">
+    <div class="fg"><label class="flbl">Nome da Campanha</label><input type="text" class="fi" id="camp-nome" placeholder="Ex: Lançamento Sérum C — Verão 2025"></div>
+    <div class="fr"><div class="fg"><label class="flbl">Produto Foco</label><select class="fs" id="camp-prod"></select></div><div class="fg"><label class="flbl">Canal Principal</label><select class="fs" id="camp-canal"><option value="instagram">Instagram / Meta</option><option value="whatsapp">WhatsApp</option><option value="email">E-mail</option><option value="pdv">PDV</option><option value="influencer">Influencer</option><option value="multiplos">Múltiplos</option></select></div></div>
+    <div class="fr"><div class="fg"><label class="flbl">Início</label><input type="date" class="fi" id="camp-ini"></div><div class="fg"><label class="flbl">Fim</label><input type="date" class="fi" id="camp-fim"></div></div>
+    <div class="fr"><div class="fg"><label class="flbl">Orçamento (R$)</label><input type="number" class="fi" id="camp-orc" step="0.01"></div><div class="fg"><label class="flbl">Status</label><select class="fs" id="camp-stat"><option value="planejamento">Planejamento</option><option value="ativa">Ativa</option><option value="pausada">Pausada</option><option value="concluida">Concluída</option></select></div></div>
+    <div class="fg"><label class="flbl">Objetivo e Metas</label><textarea class="ft" id="camp-obj" placeholder="O que quer alcançar? Meta de vendas, leads, alcance..."></textarea></div>
+  </div>
+  <div class="mfoot"><button class="btn btn-o" onclick="closeM('m-camp')">Cancelar</button><button class="btn btn-p" onclick="saveCamp()">💾 Salvar</button></div>
+</div></div>
+
+<div class="tcon" id="tcon"></div>
+<script src="js/db.js"></script>
+<script>
+renderSidebar('marketing');
+
+function rMkt(){
+const db=getDB();
+// Personas
+const gp=document.getElementById(‘grid-per’),ep=document.getElementById(‘emp-per’);
+if(!db.personas.length){gp.innerHTML=’’;gp.style.display=‘none’;ep.style.display=‘block’;}
+else{ep.style.display=‘none’;gp.style.display=‘grid’;
+gp.innerHTML=db.personas.map(p=>`<div class="persona-card"> <div class="pav">${p.emoji||'👤'}</div> <div style="font-weight:600;font-size:14px;margin-bottom:2px">${p.nome}</div> <div style="font-size:11px;color:var(--muted);margin-bottom:8px">${p.idade||''}${p.renda?' · '+p.renda:''}</div> ${p.dores?`<div style="font-size:12px;background:var(--s2);padding:8px;border-radius:6px;line-height:1.5;margin-bottom:8px;color:var(--t2)"><strong>Dores:</strong> ${p.dores.substring(0,100)}${p.dores.length>100?’…’:’’}</div>`:''} ${p.canais?`<div style="font-size:11px;color:var(--muted)">📱 ${p.canais}</div>`:''} ${p.prods?`<div style="font-size:11px;color:var(--p);margin-top:4px">🧪 ${p.prods}</div>`:''} <div style="margin-top:10px;display:flex;gap:5px"><button class="btn btn-o btn-sm" onclick="editPer('${p.id}')">✏️</button><button class="btn btn-d btn-sm" onclick="delPer('${p.id}')">🗑</button></div> </div>`).join(’’);}
+// Campanhas
+const tb=document.getElementById(‘tb-camp’),ec=document.getElementById(‘emp-camp’);
+if(!db.campanhas.length){tb.innerHTML=’’;ec.style.display=‘block’;return;}
+ec.style.display=‘none’;
+tb.innerHTML=db.campanhas.map(c=>`<tr><td><strong>${c.nome}</strong></td><td style="font-size:12px">${c.prod_nome||'—'}</td><td><span class="badge bg-blue">${c.canal}</span></td><td style="font-size:11px">${c.ini||'—'} – ${c.fim||'—'}</td><td>${c.orc?brl(c.orc):'—'}</td><td style="font-size:12px;max-width:160px">${c.obj?.substring(0,60)||'—'}${c.obj?.length>60?'…':''}</td><td>${badge(c.stat)}</td><td><button class="btn-ic" onclick="delCamp('${c.id}')" style="border-color:var(--danger);color:var(--danger)">🗑</button></td></tr>`).join(’’);
+}
+
+function savePer(){
+const id=document.getElementById(‘per-id’).value,db=getDB();
+const o={id:id||genID(),nome:document.getElementById(‘per-nome’).value.trim(),emoji:document.getElementById(‘per-emoji’).value.trim(),idade:document.getElementById(‘per-idade’).value.trim(),renda:document.getElementById(‘per-renda’).value.trim(),perfil:document.getElementById(‘per-perfil’).value.trim(),dores:document.getElementById(‘per-dores’).value.trim(),canais:document.getElementById(‘per-canais’).value.trim(),prods:document.getElementById(‘per-prods’).value.trim()};
+if(!o.nome){toast(‘Nome obrigatório’,‘e’);return;}
+if(id){const i=db.personas.findIndex(x=>x.id===id);if(i>=0)db.personas[i]=o;}else db.personas.push(o);
+saveDB(db);closeM(‘m-per’);document.getElementById(‘per-id’).value=’’;rMkt();toast(‘Persona salva!’,‘s’);
+}
+function editPer(id){const db=getDB(),p=db.personas.find(x=>x.id===id);if(!p)return;document.getElementById(‘per-id’).value=p.id;[‘nome’,‘emoji’,‘idade’,‘renda’,‘perfil’,‘dores’,‘canais’,‘prods’].forEach(k=>{const el=document.getElementById(‘per-’+k);if(el)el.value=p[k]||’’;});openM(‘m-per’);}
+function delPer(id){if(!confirm(‘Excluir persona?’))return;const db=getDB();db.personas=db.personas.filter(p=>p.id!==id);saveDB(db);rMkt();toast(‘Removida’,‘s’);}
+
+function popCampSelects(){const db=getDB();document.getElementById(‘camp-prod’).innerHTML=’<option value="">— Selecione produto —</option>’+db.produtos.map(p=>`<option value="${p.id}" data-nome="${p.nome}">${p.nome}</option>`).join(’’);}
+function saveCamp(){
+const db=getDB();const pSel=document.getElementById(‘camp-prod’);
+db.campanhas.push({id:genID(),nome:document.getElementById(‘camp-nome’).value.trim(),prod_id:pSel.value,prod_nome:pSel.options[pSel.selectedIndex]?.dataset?.nome||’’,canal:document.getElementById(‘camp-canal’).value,ini:document.getElementById(‘camp-ini’).value,fim:document.getElementById(‘camp-fim’).value,orc:document.getElementById(‘camp-orc’).value,stat:document.getElementById(‘camp-stat’).value,obj:document.getElementById(‘camp-obj’).value.trim()});
+saveDB(db);closeM(‘m-camp’);rMkt();toast(‘Campanha criada!’,‘s’);
+}
+function delCamp(id){if(!confirm(‘Excluir campanha?’))return;const db=getDB();db.campanhas=db.campanhas.filter(c=>c.id!==id);saveDB(db);rMkt();toast(‘Removida’,‘s’);}
+
+// FIX: Usar MODAL_OPEN_HOOKS em vez de window.openM override
+MODAL_OPEN_HOOKS[‘m-camp’] = popCampSelects;
+rMkt();
+</script>
+
+</body>
+</html>
