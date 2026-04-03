@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derm.ethic — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <div id="sidebar-container"></div>
+  <main class="main">
+    <div class="page-hdr">
+      <div>
+        <div class="page-title">Dashboard</div>
+        <div class="page-sub">Visão geral com +15 indicadores e análises em tempo real</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="btn btn-o btn-sm" onclick="location.href='comunicacao.html'">💬 IA</button>
+        <button class="btn btn-p btn-sm" onclick="location.href='financeiro.html'">+ Lançar NF / Custo</button>
+      </div>
+    </div>
+    <div class="page-body">
+
+```
+  <!-- TABS do Dashboard -->
+  <div class="tabs">
+    <div class="tab active" onclick="stab('dt','visaogeral',this)">◈ Visão Geral</div>
+    <div class="tab" onclick="stab('dt','financeiro',this)">💰 Análise Financeira</div>
+    <div class="tab" onclick="stab('dt','clientes',this)">👥 Análise de Clientes</div>
+    <div class="tab" onclick="stab('dt','produtos',this)">🧪 Análise de Produtos</div>
+    <div class="tab" onclick="stab('dt','marketing',this)">📣 ROI Marketing</div>
+    <div class="tab" onclick="stab('dt','fornecedores',this)">🏭 Fornecedores</div>
+  </div>
+
+  <!-- ==================== ABA: VISÃO GERAL ==================== -->
+  <div id="dt-visaogeral" class="tc-panel active">
+
+    <div class="g4" id="kpi-fin-row" style="margin-bottom:12px"></div>
+    <div class="g4" id="kpi-op-row" style="margin-bottom:12px"></div>
+    <div class="g5" id="kpi-port-row" style="margin-bottom:16px"></div>
+
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-title">💰 DRE Resumido</div>
+        <div id="dash-dre"></div>
+        <div class="div"></div>
+        <div id="dash-margin-bars"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🔔 Central de Alertas & Prioridades</div>
+        <div id="dash-alertas"></div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-title">👥 Top 5 Clientes por Receita</div>
+        <div id="dash-top-clientes"></div>
+        <div class="div"></div>
+        <div style="font-size:11px;color:var(--muted)">Baseado em NFs de saída registradas</div>
+      </div>
+      <div class="card">
+        <div class="card-title">🧪 Ranking de Produtos — Margem Bruta</div>
+        <div id="dash-ranking-prod"></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px">
+      <div class="card">
+        <div class="card-title">🏥 Scorecard de Saúde do Negócio</div>
+        <div id="dash-scorecard"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚖️ Break-Even Estimado</div>
+        <div id="dash-breakeven"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Clientes por Canal</div>
+        <div id="dash-canais"></div>
+      </div>
+    </div>
+
+    <div class="g3" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-title">🔬 Pipeline de Produtos</div>
+        <div id="dash-pipeline"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📈 Tendência Receita vs Custo</div>
+        <div id="dash-trend"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🏭 Risco de Fornecedores</div>
+        <div id="dash-forn-risk"></div>
+      </div>
+    </div>
+
+    <div class="g3">
+      <div class="card">
+        <div class="card-title">💵 Projeção de Caixa 30/60/90d</div>
+        <div id="dash-cashflow"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🎯 Metas do Trimestre</div>
+        <div id="dash-metas"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">✅ Ações do Dia</div>
+        <div class="checklist-item"><input type="checkbox"><div><strong>Verificar pedidos e responder clientes</strong><br><small style="color:var(--muted)">WhatsApp + e-mail comercial</small></div></div>
+        <div class="checklist-item"><input type="checkbox"><div><strong>Checar status de produção com LabCosm</strong><br><small style="color:var(--muted)">Confirmar lotes e prazos</small></div></div>
+        <div class="checklist-item"><input type="checkbox"><div><strong>Lançar custos e NFs do dia</strong><br><small style="color:var(--muted)">Manter financeiro atualizado</small></div></div>
+        <div class="checklist-item"><input type="checkbox"><div><strong>Atualizar follow-up de prospectos</strong><br><small style="color:var(--muted)">Registrar contatos e próximas ações</small></div></div>
+        <div class="checklist-item"><input type="checkbox"><div><strong>Revisar publicações das redes sociais</strong></div></div>
+        <div class="checklist-item"><input type="checkbox"><div><strong>Backup semanal dos dados (sexta)</strong></div></div>
+      </div>
+    </div>
+  </div><!-- /dt-visaogeral -->
+
+  <!-- ==================== ABA: ANÁLISE FINANCEIRA ==================== -->
+  <div id="dt-financeiro" class="tc-panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-title">📊 DRE Completo com % da Receita</div>
+        <div id="an-dre-full"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🧮 Break-Even Calculator</div>
+        <div class="ib info">Preencha os campos para calcular o ponto de equilíbrio em tempo real.</div>
+        <div class="fr">
+          <div class="fg"><label class="flbl">Custo Fixo Mensal (R$)</label><input type="number" class="fi" id="be-fixo" value="15820" oninput="calcBreakEven()"></div>
+          <div class="fg"><label class="flbl">Preço Médio de Venda (R$)</label><input type="number" class="fi" id="be-preco" value="89.90" oninput="calcBreakEven()"></div>
+        </div>
+        <div class="fr">
+          <div class="fg"><label class="flbl">Custo Variável Médio (R$)</label><input type="number" class="fi" id="be-variac" value="22.00" oninput="calcBreakEven()"></div>
+          <div class="fg"><label class="flbl">Impostos sobre venda (%)</label><input type="number" class="fi" id="be-imp" value="6" oninput="calcBreakEven()"></div>
+        </div>
+        <div id="be-result" style="margin-top:10px"></div>
+      </div>
+    </div>
+    <div class="g3" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-title">📦 Waterfall de Margem por Produto</div>
+        <div id="an-waterfall"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🏷 Markup & Preços</div>
+        <div id="an-markup"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">💸 Estrutura de Custos</div>
+        <div id="an-custos-struct"></div>
+        <div class="div"></div>
+        <div class="sh">Índices de Eficiência</div>
+        <div id="an-eficiencia"></div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="card-title">📅 Análise de Condições de Pagamento</div>
+        <div id="an-pgto"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🎯 Simulador de Preço — 3 Cenários</div>
+        <div class="fr">
+          <div class="fg"><label class="flbl">Custo Unitário (R$)</label><input type="number" class="fi" id="sim-custo" value="12.00" oninput="calcSim()"></div>
+          <div class="fg"><label class="flbl">Margem Alvo (%)</label><input type="number" class="fi" id="sim-margem" value="70" oninput="calcSim()"></div>
+        </div>
+        <div id="sim-result"></div>
+      </div>
+    </div>
+  </div><!-- /dt-financeiro -->
+
+  <!-- ==================== ABA: ANÁLISE DE CLIENTES ==================== -->
+  <div id="dt-clientes" class="tc-panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-title">🅰 Classificação RFM — ABC de Clientes</div>
+        <div class="ib info"><strong>Metodologia:</strong> A = top 20% (80% da receita) · B = 30% seguintes · C = 50% restantes · D = inativos/prospectos</div>
+        <div id="an-rfm-table"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">💎 LTV — Lifetime Value Estimado</div>
+        <div id="an-ltv"></div>
+        <div class="div"></div>
+        <div class="fr">
+          <div class="fg"><label class="flbl">Ticket médio mensal (R$)</label><input type="number" class="fi" id="ltv-ticket" value="2500" oninput="calcLTV()"></div>
+          <div class="fg"><label class="flbl">Vida média cliente (meses)</label><input type="number" class="fi" id="ltv-vida" value="24" oninput="calcLTV()"></div>
+        </div>
+        <div class="fr">
+          <div class="fg"><label class="flbl">Margem bruta (%)</label><input type="number" class="fi" id="ltv-mg" value="68" oninput="calcLTV()"></div>
+          <div class="fg"><label class="flbl">CAC médio (R$)</label><input type="number" class="fi" id="ltv-cac" value="280" oninput="calcLTV()"></div>
+        </div>
+        <div id="ltv-result"></div>
+      </div>
+    </div>
+    <div class="g3">
+      <div class="card">
+        <div class="card-title">🔻 Funil de Conversão</div>
+        <div id="an-funil"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Distribuição por Canal</div>
+        <div id="an-canal-dist"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚡ Saúde da Carteira</div>
+        <div id="an-carteira"></div>
+        <div class="div"></div>
+        <a href="clientes.html" class="btn btn-p btn-sm" style="width:100%;justify-content:center">Ver todos os clientes →</a>
+      </div>
+    </div>
+  </div><!-- /dt-clientes -->
+
+  <!-- ==================== ABA: ANÁLISE DE PRODUTOS ==================== -->
+  <div id="dt-produtos" class="tc-panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-title">🧮 BOM Detalhado por Produto</div>
+        <div id="an-bom-detail"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📈 Contribuição Marginal</div>
+        <div id="an-contribuicao"></div>
+        <div class="ib tip" style="margin-top:10px"><strong>Contribuição Marginal</strong> = Preço – Custo Variável. Quanto cada unidade contribui para pagar os custos fixos.</div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="card-title">🏛 Status Regulatório — Cronograma Anvisa</div>
+        <div id="an-regulatorio"></div>
+        <div class="div"></div>
+        <a href="formulacao.html" class="btn btn-p btn-sm" style="width:100%;justify-content:center">Gerenciar formulações →</a>
+      </div>
+      <div class="card">
+        <div class="card-title">⚖️ Sensibilidade de Preço (±15%)</div>
+        <div id="an-sensibilidade"></div>
+        <div class="ib warn" style="margin-top:10px">Analise o impacto antes de oferecer descontos.</div>
+      </div>
+    </div>
+  </div><!-- /dt-produtos -->
+
+  <!-- ==================== ABA: ROI MARKETING ==================== -->
+  <div id="dt-marketing" class="tc-panel">
+    <div class="g3" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-title">📣 ROI por Campanha</div>
+        <div id="an-roi-camp"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📱 Investimento por Canal</div>
+        <div id="an-invest-canal"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🎯 CAC — Custo de Aquisição</div>
+        <div id="an-cac"></div>
+      </div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="card-title">💡 Personas × Produtos</div>
+        <div id="an-personas-mapa"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📅 Calendário Editorial — Próximas 4 Semanas</div>
+        <div id="an-calendario"></div>
+        <div class="div"></div>
+        <a href="marketing.html" class="btn btn-p btn-sm" style="width:100%;justify-content:center">Gerenciar campanhas →</a>
+      </div>
+    </div>
+  </div><!-- /dt-marketing -->
+
+  <!-- ==================== ABA: FORNECEDORES ==================== -->
+  <div id="dt-fornecedores" class="tc-panel">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-title">💰 Gasto por Fornecedor</div>
+        <div id="an-gasto-forn"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚡ Matriz Risco × Dependência</div>
+        <div id="an-matriz-risk"></div>
+      </div>
+    </div>
+    <div class="g3">
+      <div class="card">
+        <div class="card-title">⭐ Ranking de Avaliação</div>
+        <div id="an-rank-forn"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📦 Concentração por Categoria</div>
+        <div id="an-concentracao"></div>
+        <div class="ib warn" style="margin-top:10px">Risco: mais de 40% de 1 único fornecedor.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">⏱ Lead Time por Categoria</div>
+        <div id="an-leadtime"></div>
+        <div class="div"></div>
+        <a href="fornecedores.html" class="btn btn-p btn-sm" style="width:100%;justify-content:center">Gerenciar fornecedores →</a>
+      </div>
+    </div>
+  </div><!-- /dt-fornecedores -->
+
+</div><!-- /page-body -->
+```
+
+  </main>
+</div>
+<div class="tcon" id="tcon"></div>
+<script src="js/db.js"></script>
+<script>
+
+// =====================================================================
+// HELPERS ANALÍTICOS
+// =====================================================================
+function pct(v,t){return t>0?Math.round(v/t*100):0;}
+function brlK(v){const n=parseFloat(v)||0;return n>=1000?‘R$’+(n/1000).toFixed(1)+‘k’:brl(v);}
+function colorByPct(p,good,warn){return p>=good?‘var(–success)’:p>=warn?‘var(–warning)’:‘var(–danger)’;}
+function colorBar(val,max){return ‘width:’+(max>0?Math.min(100,Math.round(val/max*100)):0)+’%’;}
+function scoreColor(p){return p>=80?’#15803d’:p>=60?’#92400e’:’#b91c1c’;}
+function scoreDot(p){return ‘background:’+scoreColor(p);}
+
+// =====================================================================
+// INIT DASHBOARD — chamado por renderSidebar
+// =====================================================================
+function initDash(){
+const db = getDB();
+const saidas = db.nfs.filter(n=>n.tipo===‘saida’);
+const entradas_nf = db.nfs.filter(n=>n.tipo===‘entrada’);
+const rec = saidas.reduce((s,n)=>s+parseFloat(n.val||0),0);
+const recEnt = entradas_nf.reduce((s,n)=>s+parseFloat(n.val||0),0);
+const cop = db.custos_op.reduce((s,c)=>s+parseFloat(c.val||0),0);
+const cprod = db.custos_prod.reduce((s,c)=>s+parseFloat(c.qtd||0)*parseFloat(c.val||0),0);
+const cprom = db.custos_prom.reduce((s,c)=>s+parseFloat(c.val||0),0);
+const cusTotal = cop+cprod+cprom;
+const resultado = rec - cusTotal;
+const mgBruta = rec>0?((rec-cprod)/rec*100):0;
+const mgLiq = rec>0?(resultado/rec*100):0;
+const ticketMedio = saidas.length>0?(rec/saidas.length):0;
+const ativos = db.clientes.filter(c=>c.status===‘ativo’).length;
+const prospectos = db.clientes.filter(c=>c.status===‘prospecto’).length;
+const inativos = db.clientes.filter(c=>c.status===‘inativo’).length;
+const anv_pend = db.produtos.filter(p=>p.sanv===‘pendente’||p.sanv===‘em_processo’).length;
+const fornBom = db.fornecedores.filter(f=>parseInt(f.av)>=4).length;
+const campAtivas = db.campanhas.filter(c=>c.stat===‘ativa’).length;
+
+// KPI ROW 1
+const row1 = [
+{icon:‘💰’,label:‘Receita Total (NFs)’,val:brl(rec),sub:saidas.length+’ nota(s) de saída’,trend:rec>0?‘up’:‘neutral’,tval:rec>0?‘↑’:’—’,bar:100,fn:“location.href=‘financeiro.html’”},
+{icon:‘📊’,label:‘Resultado Líquido’,val:brl(resultado),sub:‘Margem líq.: ‘+mgLiq.toFixed(1)+’%’,trend:resultado>=0?‘up’:‘down’,tval:resultado>=0?‘↑’:‘↓’,bar:Math.max(0,Math.min(100,50+mgLiq)),fn:“stab(‘dt’,‘financeiro’,document.querySelector(’.tab:nth-child(2)’))”},
+{icon:‘🎯’,label:‘Margem Bruta’,val:mgBruta.toFixed(1)+’%’,sub:‘Meta mínima: 65%’,trend:mgBruta>=65?‘up’:mgBruta>=50?‘neutral’:‘down’,tval:mgBruta>=65?‘OK’:‘Baixa’,bar:Math.min(100,mgBruta),fn:“stab(‘dt’,‘financeiro’,document.querySelector(’.tab:nth-child(2)’))”},
+{icon:‘🧾’,label:‘Ticket Médio/NF’,val:brl(ticketMedio),sub:‘Total: ‘+saidas.length+’ vendas’,trend:‘neutral’,tval:’—’,bar:Math.min(100,pct(ticketMedio,10000)),fn:“location.href=‘financeiro.html’”},
+];
+const el1 = document.getElementById(‘kpi-fin-row’);
+if(el1) el1.innerHTML = row1.map(k=>’<div class="stat" onclick="'+k.fn+'" style="cursor:pointer"><div class="stat-trend '+k.trend+'">’+k.tval+’</div><div class="stat-icon">’+k.icon+’</div><div class="stat-label">’+k.label+’</div><div class="stat-val xs">’+k.val+’</div><div class="stat-sub">’+k.sub+’</div><div class="stat-bar"><div class="stat-bar-fill" style="width:'+k.bar+'%"></div></div></div>’).join(’’);
+
+// KPI ROW 2
+const row2 = [
+{icon:‘👥’,label:‘Clientes Ativos’,val:ativos,sub:prospectos+’ prospectos · ‘+inativos+’ inativos’,color:‘var(–success)’,bar:pct(ativos,db.clientes.length||1),fn:“location.href=‘clientes.html’”},
+{icon:‘🧪’,label:‘Portfólio de Produtos’,val:db.produtos.length,sub:db.produtos.filter(p=>p.pstatus===‘ativo’).length+’ ativos · ‘+db.produtos.filter(p=>p.pstatus===‘desenvolvimento’).length+’ em P&D’,color:‘var(–p3)’,bar:pct(db.produtos.filter(p=>p.pstatus===‘ativo’).length,db.produtos.length||1),fn:“location.href=‘formulacao.html’”},
+{icon:‘🏭’,label:‘Fornecedores’,val:db.fornecedores.length,sub:fornBom+’ bem avaliados (4★+)’,color:‘var(–info)’,bar:pct(fornBom,db.fornecedores.length||1),fn:“location.href=‘fornecedores.html’”},
+{icon:‘🤝’,label:‘Parceiros Ativos’,val:db.terceirizados.filter(t=>t.status===‘ativo’).length,sub:‘de ‘+db.terceirizados.length+’ cadastrados’,color:‘var(–warning)’,bar:pct(db.terceirizados.filter(t=>t.status===‘ativo’).length,db.terceirizados.length||1),fn:“location.href=‘terceirizados.html’”},
+];
+const el2 = document.getElementById(‘kpi-op-row’);
+if(el2) el2.innerHTML = row2.map(k=>’<div class="stat" onclick="'+k.fn+'" style="cursor:pointer"><div class="stat-icon">’+k.icon+’</div><div class="stat-label">’+k.label+’</div><div class="stat-val" style="font-size:32px;color:'+k.color+'">’+k.val+’</div><div class="stat-sub">’+k.sub+’</div><div class="stat-bar"><div class="stat-bar-fill" style="width:'+k.bar+'%;background:'+k.color+'"></div></div></div>’).join(’’);
+
+// KPI ROW 3 (5 cards)
+const row3 = [
+{icon:‘⏳’,label:‘Anvisa Pendente’,val:anv_pend,sub:‘produtos sem reg. OK’,c:anv_pend>0?‘var(–warning)’:‘var(–success)’,fn:“location.href=‘formulacao.html’”},
+{icon:‘📣’,label:‘Campanhas Ativas’,val:campAtivas,sub:‘de ‘+db.campanhas.length+’ campanhas’,c:‘var(–info)’,fn:“location.href=‘marketing.html’”},
+{icon:‘💸’,label:‘Custo Fixo/Mês’,val:brl(cop),sub:‘operacional recorrente’,c:‘var(–danger)’,fn:“location.href=‘financeiro.html’”},
+{icon:‘📈’,label:‘Invest. Marketing’,val:brl(cprom),sub:rec>0?((cprom/rec*100).toFixed(1)+’% da receita’):’—’,c:‘var(–p)’,fn:“location.href=‘marketing.html’”},
+{icon:‘🏷’,label:‘BOM Acumulado’,val:brl(cprod),sub:‘custo de produção’,c:‘var(–p3)’,fn:“stab(‘dt’,‘financeiro’,document.querySelector(’.tab:nth-child(2)’))”},
+];
+const el3 = document.getElementById(‘kpi-port-row’);
+if(el3) el3.innerHTML = row3.map(k=>’<div class="stat" onclick="'+k.fn+'" style="cursor:pointer;padding:10px 12px"><div class="stat-icon" style="font-size:16px">’+k.icon+’</div><div class="stat-label">’+k.label+’</div><div class="stat-val xs" style="color:'+k.c+'">’+k.val+’</div><div class="stat-sub">’+k.sub+’</div></div>’).join(’’);
+
+// DRE Resumido
+const dreEl = document.getElementById(‘dash-dre’);
+if(dreEl) dreEl.innerHTML = [
+{l:‘Receita Bruta (NFs Saída)’,v:rec,pct_:‘100%’},
+{l:’(-) Custo dos Produtos (BOM)’,v:-cprod,pct_:rec>0?((cprod/rec*100).toFixed(1)+’%’):’—’},
+{l:’= Margem Bruta’,v:rec-cprod,pct_:(rec-cprod>=0?’’:’’)+mgBruta.toFixed(1)+’%’,bold:true},
+{l:’(-) Custos Operacionais Fixos’,v:-cop,pct_:rec>0?((cop/rec*100).toFixed(1)+’%’):’—’},
+{l:’(-) Invest. Promocional’,v:-cprom,pct_:rec>0?((cprom/rec*100).toFixed(1)+’%’):’—’},
+{l:’= Resultado Líquido’,v:resultado,pct_:mgLiq.toFixed(1)+’%’,bold:true},
+].map(r=>’<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px'+(r.bold?';font-weight:700':'')+'"><span style="color:var(--t2)">’+r.l+’</span><div style="display:flex;gap:14px"><span style="color:var(--muted);font-size:10.5px">’+r.pct_+’</span><span style="font-weight:600;color:'+(r.v>=0?'var(--success)':'var(--danger)')+'">’+brl(r.v)+’</span></div></div>’).join(’’);
+
+// Barras de margem por produto
+const mbEl = document.getElementById(‘dash-margin-bars’);
+if(mbEl && db.produtos.length){
+const wm = db.produtos.filter(p=>p.custo&&p.varejo);
+mbEl.innerHTML = ‘<div class="sh">Margem por produto</div>’+wm.slice(0,5).map(p=>{
+const m=((1-parseFloat(p.custo)/parseFloat(p.varejo))*100);
+const c=m>=70?‘var(–success)’:m>=60?‘var(–warning)’:‘var(–danger)’;
+return ‘<div style="margin-bottom:6px"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:2px"><span style="color:var(--t2)">’+p.nome.substring(0,32)+’</span><span style="font-weight:600;color:'+c+'">’+m.toFixed(1)+’%</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+Math.min(100,m)+'%;background:'+c+'"></div></div></div>’;
+}).join(’’);
+}
+
+// Alertas
+const alerts = [];
+if(anv_pend>0) alerts.push({pri:‘high’,type:‘danger’,msg:’<strong>Anvisa:</strong> ‘+anv_pend+’ produto(s) sem registro concluído. Risco de venda irregular.’,icon:‘🏛’});
+if(prospectos>0) alerts.push({pri:‘mid’,type:‘warn’,msg:’<strong>Follow-up:</strong> ‘+prospectos+’ prospecto(s) aguardando contato: ‘+db.clientes.filter(c=>c.status===‘prospecto’).slice(0,2).map(c=>c.nome).join(’, ‘),icon:‘📞’});
+const baixoAv = db.fornecedores.filter(f=>parseInt(f.av)<=2);
+if(baixoAv.length) alerts.push({pri:‘high’,type:‘danger’,msg:’<strong>Fornecedores:</strong> ‘+baixoAv.length+’ com avaliação ≤2★: ‘+baixoAv.map(f=>f.nome).join(’, ‘),icon:‘⚠️’});
+if(mgBruta<50&&rec>0) alerts.push({pri:‘high’,type:‘danger’,msg:’<strong>Margem crítica:</strong> ‘+mgBruta.toFixed(1)+’% abaixo de 65%. Revisar custos e preços.’,icon:‘📉’});
+if(cprom>0&&rec>0&&cprom/rec>0.15) alerts.push({pri:‘mid’,type:‘warn’,msg:’<strong>Marketing:</strong> ‘+((cprom/rec)*100).toFixed(1)+’% da receita (recomendado: 8–12%).’,icon:‘📊’});
+if(db.fornecedores.filter(f=>f.cat===‘embalagens’).length<2) alerts.push({pri:‘mid’,type:‘warn’,msg:’<strong>Risco cadeia:</strong> Apenas 1 fornecedor de embalagens. Qualificar alternativa.’,icon:‘📦’});
+if(campAtivas===0) alerts.push({pri:‘low’,type:‘info’,msg:’<strong>Marketing:</strong> Nenhuma campanha ativa no momento.’,icon:‘💡’});
+if(!alerts.length) alerts.push({pri:‘low’,type:‘ok’,msg:‘✅ Nenhuma pendência crítica. Sistema operando normalmente.’,icon:‘✅’});
+const altEl = document.getElementById(‘dash-alertas’);
+if(altEl) altEl.innerHTML = alerts.map(a=>’<div class="alert-item '+a.type+'"><span style="font-size:15px">’+a.icon+’</span><div><span class="alert-priority ap-'+a.pri+'">’+({high:‘Alta’,mid:‘Média’,low:‘Baixa’}[a.pri])+’</span><div style="margin-top:3px;font-size:12px;line-height:1.5">’+a.msg+’</div></div></div>’).join(’’);
+
+// Top 5 clientes
+const clienteRec = {};
+saidas.forEach(n=>{clienteRec[n.ent]=(clienteRec[n.ent]||0)+parseFloat(n.val||0);});
+const topCli = Object.entries(clienteRec).sort((a,b)=>b[1]-a[1]).slice(0,5);
+const tcEl = document.getElementById(‘dash-top-clientes’);
+if(tcEl) tcEl.innerHTML = topCli.length?’<table><thead><tr><th>#</th><th>Cliente</th><th style="text-align:right">Receita</th><th style="text-align:right">%</th></tr></thead><tbody>’+topCli.map((c,i)=>{const p=pct(c[1],rec);return ‘<tr><td><strong style="color:var(--accent)">’+(i+1)+‘º</strong></td><td>’+c[0]+’</td><td style="text-align:right;font-weight:600;color:var(--success)">’+brl(c[1])+’</td><td style="text-align:right"><span class="badge '+(i<2?'bg-green':'bg-blue')+'">’+p+’%</span></td></tr>’;}).join(’’)+’</tbody></table>’:’<div class="ib info">Sem NFs de saída registradas.</div>’;
+
+// Ranking produtos
+const rpEl = document.getElementById(‘dash-ranking-prod’);
+if(rpEl){
+const pm=db.produtos.filter(p=>p.custo&&p.varejo).map(p=>({n:p.nome,m:((1-parseFloat(p.custo)/parseFloat(p.varejo))*100),v:parseFloat(p.varejo),c:parseFloat(p.custo)})).sort((a,b)=>b.m-a.m);
+rpEl.innerHTML=pm.length?’<table><thead><tr><th>#</th><th>Produto</th><th style="text-align:right">Varejo</th><th style="text-align:right">Margem</th></tr></thead><tbody>’+pm.map((p,i)=>’<tr><td><strong>’+(i+1)+‘º</strong></td><td style="font-size:12px">’+p.n.substring(0,28)+’</td><td style="text-align:right">’+brl(p.v)+’</td><td style="text-align:right"><span class="badge '+(p.m>=70?'bg-green':p.m>=60?'bg-amber':'bg-red')+'">’+p.m.toFixed(1)+’%</span></td></tr>’).join(’’)+’</tbody></table>’:’<div class="ib tip">Preencha custo e varejo nos produtos.</div>’;
+}
+
+// Scorecard
+const sc = [
+{l:‘Margem Bruta ≥ 65%’,p:Math.min(100,mgBruta),ok:mgBruta>=65},
+{l:‘Margem Líquida ≥ 15%’,p:Math.max(0,Math.min(100,mgLiq+50)),ok:mgLiq>=15},
+{l:‘Clientes Ativos ≥ 70%’,p:pct(ativos,db.clientes.length||1),ok:pct(ativos,db.clientes.length||1)>=70},
+{l:‘Fornecedores 4★+’,p:pct(fornBom,db.fornecedores.length||1),ok:pct(fornBom,db.fornecedores.length||1)>=75},
+{l:‘Produtos Anvisa OK’,p:pct(db.produtos.filter(p=>p.sanv===‘registrado’).length,db.produtos.length||1),ok:anv_pend===0},
+{l:‘Marketing 8–12% Receita’,p:rec>0?Math.min(100,100-Math.abs(cprom/rec*100-10)*5):0,ok:rec>0&&cprom/rec>=0.08&&cprom/rec<=0.12},
+{l:‘2+ Forn. p/ Categoria-chave’,p:db.fornecedores.filter(f=>f.cat===‘embalagens’).length>=2?100:30,ok:db.fornecedores.filter(f=>f.cat===‘embalagens’).length>=2},
+{l:‘API Key configurada’,p:getDB().cfg?.key?100:0,ok:!!getDB().cfg?.key},
+];
+const scEl = document.getElementById(‘dash-scorecard’);
+if(scEl) scEl.innerHTML = sc.map(s=>’<div class="score-row"><div class="score-dot" style="'+scoreDot(s.p)+'"></div><div class="score-lbl">’+s.l+’</div><div style="text-align:right;font-size:11px;font-weight:600;color:'+scoreColor(s.p)+'">’+(s.ok?‘✓’:‘✗’)+’ ‘+s.p.toFixed(0)+’%</div></div>’).join(’’);
+
+// Break-even
+const beEl = document.getElementById(‘dash-breakeven’);
+if(beEl){
+const pMgMedia = db.produtos.filter(p=>p.custo&&p.varejo).length?db.produtos.filter(p=>p.custo&&p.varejo).reduce((s,p)=>s+(1-parseFloat(p.custo)/parseFloat(p.varejo)),0)/db.produtos.filter(p=>p.custo&&p.varejo).length:0.65;
+const pMed = db.produtos.filter(p=>p.varejo).length?db.produtos.filter(p=>p.varejo).reduce((s,p)=>s+parseFloat(p.varejo),0)/db.produtos.filter(p=>p.varejo).length:90;
+const beUnid = cop>0&&pMgMedia>0?Math.ceil(cop/(pMed*pMgMedia)):0;
+const beRec = beUnid*pMed;
+beEl.innerHTML = ‘<div class="be-grid"><div class="be-item"><div class="be-val">’+beUnid+’</div><div class="be-lbl">Unidades/mês p/ BE</div></div><div class="be-item"><div class="be-val" style="font-size:16px">’+brl(beRec)+’</div><div class="be-lbl">Receita mínima/mês</div></div><div class="be-item"><div class="be-val">’+(pMgMedia*100).toFixed(0)+’%</div><div class="be-lbl">Margem Contrib. Média</div></div></div><div style="font-size:11px;color:var(--muted);margin-top:6px">Custo fixo ‘+brl(cop)+’/mês · Preço médio ‘+brl(pMed)+’</div>’;
+}
+
+// Canais
+const canaisEl = document.getElementById(‘dash-canais’);
+if(canaisEl){
+const byC={};db.clientes.forEach(c=>{if(c.canal)byC[c.canal]=(byC[c.canal]||0)+1;});
+const sortedC=Object.entries(byC).sort((a,b)=>b[1]-a[1]);
+const cLbl={farmacia:‘Farmácias’,salao:‘Salões’,distribuidor:‘Distribuidores’,loja_especializada:‘Lojas Esp.’,supermercado:‘Supermercados’,ecommerce:‘E-commerce’,direto:‘Direto’};
+canaisEl.innerHTML=sortedC.length?’<table><thead><tr><th>Canal</th><th style="text-align:right">Clientes</th><th>Participação</th></tr></thead><tbody>’+sortedC.map(([k,v])=>’<tr><td style="font-size:12px">’+(cLbl[k]||k)+’</td><td style="text-align:right;font-weight:600">’+v+’</td><td style="width:50%"><div class="progress-bar" style="height:8px"><div class="progress-fill" style="'+colorBar(v,sortedC[0][1])+'"></div></div></td></tr>’).join(’’)+’</tbody></table>’:’<div class="ib tip">Defina canais nos clientes.</div>’;
+}
+
+// Pipeline
+const plEl = document.getElementById(‘dash-pipeline’);
+if(plEl){
+const stages=[{k:‘desenvolvimento’,l:‘Em P&D’,c:’#8b5cf6’},{k:‘aprovacao’,l:‘Aprovação’,c:’#3b82f6’},{k:‘ativo’,l:‘Ativo’,c:’#22c55e’},{k:‘descontinuado’,l:‘Descont.’,c:’#ef4444’}];
+plEl.innerHTML=’<div class="funnel">’+stages.map(s=>{const n=db.produtos.filter(p=>p.pstatus===s.k).length;return’<div class="funnel-step"><div class="funnel-label">’+s.l+’</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="background:'+s.c+';'+colorBar(n,db.produtos.length||1)+'">’+n+’</div></div><div class="funnel-num">’+n+’</div></div>’;}).join(’’)+’</div><div class="div"></div>’+db.produtos.slice(0,4).map(p=>’<div style="font-size:11px;padding:3px 0;display:flex;justify-content:space-between;border-bottom:1px solid var(--border)"><span>’+p.nome.substring(0,22)+’</span>’+badge(p.pstatus)+’</div>’).join(’’);
+}
+
+// Tendência
+const trendEl = document.getElementById(‘dash-trend’);
+if(trendEl){
+const meses=[‘Jan’,‘Fev’,‘Mar’,‘Abr’,‘Mai’,‘Jun’];
+const recSim=[2800,4200,3900,5460,7300,rec||6800];
+const cusSim=[2200,3100,3200,4100,5800,cusTotal||5200];
+const maxT=Math.max(…recSim,…cusSim,1);
+trendEl.innerHTML=’<div style="display:flex;align-items:flex-end;gap:4px;height:100px">’+meses.map((m,i)=>’<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px"><div style="width:100%;display:flex;gap:2px;align-items:flex-end;height:82px"><div style="flex:1;border-radius:3px 3px 0 0;background:var(--p3);height:'+(recSim[i]/maxT*100)+'%"></div><div style="flex:1;border-radius:3px 3px 0 0;background:var(--accent);opacity:.7;height:'+(cusSim[i]/maxT*100)+'%"></div></div><div style="font-size:9px;color:var(--muted)">’+m+’</div></div>’).join(’’)+’</div><div style="display:flex;gap:14px;margin-top:6px;font-size:10px"><span><span style="display:inline-block;width:10px;height:10px;background:var(--p3);border-radius:2px;margin-right:3px"></span>Receita</span><span><span style="display:inline-block;width:10px;height:10px;background:var(--accent);opacity:.7;border-radius:2px;margin-right:3px"></span>Custo</span></div>’;
+}
+
+// Risco fornecedores
+const frnEl = document.getElementById(‘dash-forn-risk’);
+if(frnEl){
+const matrix=[{cat:‘Ativos cosméticos’,n:db.fornecedores.filter(f=>f.cat===‘ativos’).length,risk:‘alta’},{cat:‘Embalagens primárias’,n:db.fornecedores.filter(f=>f.cat===‘embalagens’).length,risk:‘alta’},{cat:‘Conservantes’,n:db.fornecedores.filter(f=>f.cat===‘conservantes’).length,risk:‘media’},{cat:‘Rótulos’,n:db.fornecedores.filter(f=>f.cat===‘rotulos’).length,risk:‘media’},{cat:‘Fragrâncias’,n:db.fornecedores.filter(f=>f.cat===‘fragrancias’).length,risk:‘baixa’}];
+frnEl.innerHTML=’<table><thead><tr><th>Categoria</th><th style="text-align:center">Forn.</th><th>Risco</th><th style="text-align:center">Backup</th></tr></thead><tbody>’+matrix.map(m=>’<tr><td style="font-size:12px">’+m.cat+’</td><td style="text-align:center;font-weight:600">’+m.n+’</td><td>’+({alta:’<span class="badge bg-red">Alta</span>’,media:’<span class="badge bg-amber">Média</span>’,baixa:’<span class="badge bg-green">Baixa</span>’}[m.risk])+’</td><td style="text-align:center">’+(m.n>=2?‘✅’:’<span style="color:var(--danger)">❌</span>’)+’</td></tr>’).join(’’)+’</tbody></table>’;
+}
+
+// Cashflow
+const cfEl = document.getElementById(‘dash-cashflow’);
+if(cfEl){
+const recMes=rec/3;const cusMes=cusTotal/3;const saldo30=recMes-cusMes;
+cfEl.innerHTML=’<div class="be-grid"><div class="be-item"><div class="be-val" style="font-size:16px;color:'+(saldo30>=0?'var(--success)':'var(--danger)')+'">’+brl(saldo30)+’</div><div class="be-lbl">30 dias</div></div><div class="be-item"><div class="be-val" style="font-size:16px;color:'+(saldo30*2>=0?'var(--success)':'var(--danger)')+'">’+brl(saldo30*2)+’</div><div class="be-lbl">60 dias</div></div><div class="be-item"><div class="be-val" style="font-size:16px;color:'+(saldo30*3>=0?'var(--success)':'var(--danger)')+'">’+brl(saldo30*3)+’</div><div class="be-lbl">90 dias</div></div></div><div style="font-size:11px;color:var(--muted);margin-top:6px">Projeção linear · Receita/mês: ‘+brl(recMes)+’ · Custo/mês: ‘+brl(cusMes)+’</div>’;
+}
+
+// Metas
+const metEl = document.getElementById(‘dash-metas’);
+if(metEl){
+const metas=[{l:‘Receita trimestral’,v:rec,meta:30000},{l:‘Novos clientes ativos’,v:ativos,meta:15},{l:‘Lançamentos em P&D’,v:db.produtos.filter(p=>p.pstatus===‘desenvolvimento’).length,meta:2},{l:‘Margem bruta (%)’,v:mgBruta,meta:70}];
+metEl.innerHTML=metas.map(m=>{const p=Math.min(100,pct(m.v,m.meta));const c=p>=80?‘var(–success)’:p>=50?‘var(–warning)’:‘var(–danger)’;return’<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span style="color:var(--t2)">’+m.l+’</span><span style="font-weight:600;color:'+c+'">’+p+’%</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+p+'%;background:'+c+'"></div></div><div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:2px"><span>Atual: <strong>’+m.v.toFixed(0)+’</strong></span><span>Meta: <strong>’+m.meta+’</strong></span></div></div>’;}).join(’’);
+}
+}
+
+// =====================================================================
+// ANÁLISE FINANCEIRA
+// =====================================================================
+function initFinAnalise(){
+calcBreakEven();calcSim();anDREFull();anWaterfall();anMarkup();anCustosStruct();anEficiencia();anPgto();
+}
+function anDREFull(){
+const db=getDB();const el=document.getElementById(‘an-dre-full’);if(!el)return;
+const rec=db.nfs.filter(n=>n.tipo===‘saida’).reduce((s,n)=>s+parseFloat(n.val||0),0);
+const cprod=db.custos_prod.reduce((s,c)=>s+parseFloat(c.qtd||0)*parseFloat(c.val||0),0);
+const cop=db.custos_op.reduce((s,c)=>s+parseFloat(c.val||0),0);
+const cprom=db.custos_prom.reduce((s,c)=>s+parseFloat(c.val||0),0);
+const mgBruta=rec-cprod;const mgBrutaPct=rec>0?mgBruta/rec*100:0;
+const ebitda=mgBruta-cop;const ebitdaPct=rec>0?ebitda/rec*100:0;
+const liq=ebitda-cprom;const liqPct=rec>0?liq/rec*100:0;
+const r=n=>rec>0?((n/rec*100).toFixed(1)+’%’):’—’;
+const line=(l,v,bold,indent)=>’<tr’+(bold?’ style=“font-weight:700;background:var(–s2)”’:’’)+’><td style="font-size:12px;padding-left:'+(indent?'18px':'8px')+'px">’+l+’</td><td style="text-align:right;font-weight:600;color:'+(v>=0?'var(--success)':'var(--danger)')+'">’+brl(v)+’</td><td style="text-align:right;color:var(--muted);font-size:11px">’+r(v)+’</td></tr>’;
+const op_rows = db.custos_op.slice(0,6).map(c=>’<tr><td style="font-size:11px;color:var(--muted);padding-left:18px">(-) ‘+c.desc+’</td><td style="text-align:right;font-size:11px;color:var(--danger)">’+brl(-parseFloat(c.val||0))+’</td><td style="text-align:right;font-size:10.5px;color:var(--muted)">’+r(-parseFloat(c.val||0))+’</td></tr>’).join(’’);
+el.innerHTML=’<table class="dre-tbl"><thead><tr><th>Descrição</th><th style="text-align:right">Valor (R$)</th><th style="text-align:right">% Receita</th></tr></thead><tbody>’+
+‘<tr class="section-row"><td colspan="3">Receitas</td></tr>’+line(’(+) NFs de Saída (Vendas)’,rec,false,true)+
+‘<tr class="section-row"><td colspan="3">Custo dos Produtos (BOM)</td></tr>’+line(’(-) BOM — Custo de Produção’,-cprod,false,true)+line(’= Margem Bruta’,mgBruta,true)+
+‘<tr><td style="font-size:10px;color:var(--muted);padding-left:18px" colspan="3">Margem bruta: ‘+mgBrutaPct.toFixed(1)+’%</td></tr>’+
+‘<tr class="section-row"><td colspan="3">Despesas Operacionais</td></tr>’+op_rows+line(’= EBITDA’,ebitda,true)+
+‘<tr class="section-row"><td colspan="3">Marketing & Promoção</td></tr>’+line(’(-) Investimento Promocional’,-cprom,false,true)+line(’= Resultado Líquido’,liq,true)+
+‘</tbody></table><div class="ib tip" style="margin-top:8px;font-size:11px">EBITDA: ‘+brl(ebitda)+’ (’+ebitdaPct.toFixed(1)+’%) · Resultado líquido: ‘+liqPct.toFixed(1)+’%</div>’;
+}
+function calcBreakEven(){
+const fixo=parseFloat(document.getElementById(‘be-fixo’)?.value)||15820;
+const preco=parseFloat(document.getElementById(‘be-preco’)?.value)||89.90;
+const var_=parseFloat(document.getElementById(‘be-variac’)?.value)||22;
+const imp=parseFloat(document.getElementById(‘be-imp’)?.value)||6;
+const precoLiq=preco*(1-imp/100);const mc=precoLiq-var_;
+const beUnid=mc>0?Math.ceil(fixo/mc):Infinity;const beRec=beUnid*preco;const mgBE=mc/precoLiq*100;
+const el=document.getElementById(‘be-result’);if(!el)return;
+el.innerHTML=’<div class="be-grid"><div class="be-item"><div class="be-val">’+beUnid+’</div><div class="be-lbl">Unidades/mês</div></div><div class="be-item"><div class="be-val" style="font-size:16px">’+brl(beRec)+’</div><div class="be-lbl">Receita mínima</div></div><div class="be-item"><div class="be-val">’+mgBE.toFixed(1)+’%</div><div class="be-lbl">Margem Contrib.</div></div></div><table><thead><tr><th>Indicador</th><th>Valor</th></tr></thead><tbody><tr><td>Margem de contribuição unitária</td><td style="font-weight:600">’+brl(mc)+’</td></tr><tr><td>Preço líquido (após impostos)</td><td>’+brl(precoLiq)+’</td></tr><tr><td>Custo fixo total/mês</td><td>’+brl(fixo)+’</td></tr><tr><td>Ponto de equilíbrio (unidades)</td><td style="font-weight:600;color:var(--p)">’+beUnid+’ un/mês</td></tr><tr><td>Ponto de equilíbrio (receita)</td><td style="font-weight:600;color:var(--p)">’+brl(beRec)+’</td></tr></tbody></table>’;
+}
+function calcSim(){
+const custo=parseFloat(document.getElementById(‘sim-custo’)?.value)||12;
+const mg=parseFloat(document.getElementById(‘sim-margem’)?.value)||70;
+const el=document.getElementById(‘sim-result’);if(!el)return;
+const precoBase=custo/(1-mg/100);
+const cenarios=[{n:‘Conservador’,fator:0.9},{n:‘Base (meta)’,fator:1.0},{n:‘Agressivo’,fator:1.15}];
+el.innerHTML=’<div class="sh" style="margin-top:10px">Cenários de Precificação</div><table><thead><tr><th>Cenário</th><th style="text-align:right">Preço Varejo</th><th style="text-align:right">Atacado</th><th style="text-align:right">Margem</th><th style="text-align:right">Markup</th></tr></thead><tbody>’+cenarios.map(c=>{const p=precoBase*c.fator;const pa=p*0.60;const m=((1-custo/p)*100);return’<tr><td><strong>’+c.n+’</strong></td><td style="text-align:right;font-weight:600">’+brl(p)+’</td><td style="text-align:right">’+brl(pa)+’</td><td style="text-align:right"><span class="badge '+(m>=70?'bg-green':m>=60?'bg-amber':'bg-red')+'">’+m.toFixed(1)+’%</span></td><td style="text-align:right">’+(p/custo).toFixed(2)+‘x</td></tr>’;}).join(’’)+’</tbody></table>’;
+}
+function anWaterfall(){
+const db=getDB();const el=document.getElementById(‘an-waterfall’);if(!el)return;
+const prods=db.produtos.filter(p=>p.custo&&p.varejo);
+if(!prods.length){el.innerHTML=’<div class="ib tip">Preencha custo e varejo nos produtos.</div>’;return;}
+el.innerHTML=prods.map(p=>{const pr=parseFloat(p.varejo);const cu=parseFloat(p.custo);const mg=((1-cu/pr)*100);const c=mg>=70?’#22c55e’:mg>=60?’#f59e0b’:’#ef4444’;return’<div style="margin-bottom:8px"><div style="font-size:11.5px;color:var(--t2);margin-bottom:3px">’+p.nome.substring(0,28)+’</div><div style="display:flex;gap:2px;height:22px"><div style="width:'+(cu/pr*100).toFixed(0)+'%;background:var(--danger);opacity:.5;border-radius:4px 0 0 4px;min-width:20px;font-size:9px;display:flex;align-items:center;padding:0 4px;color:#fff;flex-shrink:0">CMV</div><div style="flex:1;background:'+c+';border-radius:0 4px 4px 0;font-size:9px;display:flex;align-items:center;padding:0 4px;color:#fff">’+mg.toFixed(0)+’%</div></div></div>’;}).join(’’);
+}
+function anMarkup(){
+const db=getDB();const el=document.getElementById(‘an-markup’);if(!el)return;
+const prods=db.produtos.filter(p=>p.custo&&p.varejo);
+if(!prods.length){el.innerHTML=’<div class="ib tip">Preencha custo e varejo nos produtos.</div>’;return;}
+el.innerHTML=’<table><thead><tr><th>Produto</th><th style="text-align:right">Custo</th><th style="text-align:right">Varejo</th><th style="text-align:right">Markup</th><th style="text-align:right">Margem</th></tr></thead><tbody>’+prods.map(p=>{const mu=(parseFloat(p.varejo)/parseFloat(p.custo)).toFixed(2)+‘x’;const mg=((1-parseFloat(p.custo)/parseFloat(p.varejo))*100).toFixed(1);return’<tr><td style="font-size:11px">’+p.nome.substring(0,22)+’</td><td style="text-align:right">’+brl(p.custo)+’</td><td style="text-align:right">’+brl(p.varejo)+’</td><td style="text-align:right;font-weight:600;color:var(--p)">’+mu+’</td><td style="text-align:right"><span class="badge '+(parseFloat(mg)>=70?'bg-green':parseFloat(mg)>=60?'bg-amber':'bg-red')+'">’+mg+’%</span></td></tr>’;}).join(’’)+’</tbody></table>’;
+}
+function anCustosStruct(){
+const db=getDB();const el=document.getElementById(‘an-custos-struct’);if(!el)return;
+const cop=db.custos_op.reduce((s,c)=>s+parseFloat(c.val||0),0);
+const cprod=db.custos_prod.reduce((s,c)=>s+parseFloat(c.qtd||0)*parseFloat(c.val||0),0);
+const cprom=db.custos_prom.reduce((s,c)=>s+parseFloat(c.val||0),0);
+const tot=cop+cprod+cprom||1;
+const items=[{l:‘Operacional (Fixo)’,v:cop,c:‘var(–p3)’},{l:‘Produto/BOM (Variável)’,v:cprod,c:‘var(–accent)’},{l:‘Promocional (Variável)’,v:cprom,c:‘var(–info)’}];
+el.innerHTML=items.map(i=>’<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span style="color:var(--t2)">’+i.l+’</span><span style="font-weight:600">’+brl(i.v)+’ (’+pct(i.v,tot)+’%)</span></div><div class="progress-bar"><div class="progress-fill" style="'+colorBar(i.v,tot)+';background:'+i.c+'"></div></div></div>’).join(’’);
+}
+function anEficiencia(){
+const db=getDB();const el=document.getElementById(‘an-eficiencia’);if(!el)return;
+const rec=db.nfs.filter(n=>n.tipo===‘saida’).reduce((s,n)=>s+parseFloat(n.val||0),0);
+const cop=db.custos_op.reduce((s,c)=>s+parseFloat(c.val||0),0);
+const cprod=db.custos_prod.reduce((s,c)=>s+parseFloat(c.qtd||0)*parseFloat(c.val||0),0);
+const cprom=db.custos_prom.reduce((s,c)=>s+parseFloat(c.val||0),0);
+const idx=[{l:‘Rec./Custo Fixo (≥2x)’,v:rec>0&&cop>0?(rec/cop).toFixed(2)+‘x’:’—’,ok:cop>0&&rec/cop>=2},{l:‘Marketing/Receita (≤12%)’,v:rec>0?((cprom/rec)*100).toFixed(1)+’%’:’—’,ok:rec>0&&cprom/rec<=0.12},{l:‘BOM/Receita (≤35%)’,v:rec>0?((cprod/rec)*100).toFixed(1)+’%’:’—’,ok:rec>0&&cprod/rec<=0.35}];
+el.innerHTML=idx.map(i=>’<div class="score-row"><div class="score-dot" style="background:'+(i.ok?'var(--success)':'var(--warning)')+'"></div><div class="score-lbl">’+i.l+’</div><div style="font-weight:600;font-size:11.5px;color:'+(i.ok?'var(--success)':'var(--warning)')+'">’+i.v+’</div></div>’).join(’’);
+}
+function anPgto(){
+const el=document.getElementById(‘an-pgto’);if(!el)return;
+el.innerHTML=’<table><thead><tr><th>Prazo</th><th>Cenário</th><th style="text-align:right">Caixa</th><th>Recomendação</th></tr></thead><tbody><tr><td>À vista</td><td>Venda direta B2C</td><td style="text-align:right;color:var(--success)">Imediato</td><td><span class="badge bg-green">Ideal</span></td></tr><tr><td>28 dias</td><td>Farmácias pequenas</td><td style="text-align:right">-28d</td><td><span class="badge bg-blue">Aceitar</span></td></tr><tr><td>30/60d</td><td>Distribuidores</td><td style="text-align:right;color:var(--warning)">-30 a 60d</td><td><span class="badge bg-amber">Negociar</span></td></tr><tr><td>60/90d</td><td>Redes grandes</td><td style="text-align:right;color:var(--danger)">Risco caixa</td><td><span class="badge bg-red">Avaliar</span></td></tr></tbody></table>’;
+}
+
+// =====================================================================
+// ANÁLISE DE CLIENTES
+// =====================================================================
+function initCliAnalise(){
+calcLTV();anRFM();anFunil();anCanalDist();anCarteira();
+}
+function calcLTV(){
+const ticket=parseFloat(document.getElementById(‘ltv-ticket’)?.value)||2500;
+const vida=parseFloat(document.getElementById(‘ltv-vida’)?.value)||24;
+const mg=parseFloat(document.getElementById(‘ltv-mg’)?.value)||68;
+const cac=parseFloat(document.getElementById(‘ltv-cac’)?.value)||280;
+const ltv=ticket*vida*(mg/100);const ratio=ltv/cac;
+const el=document.getElementById(‘an-ltv’);if(!el)return;
+el.innerHTML=’<div class="be-grid"><div class="be-item"><div class="be-val" style="font-size:18px;color:var(--success)">’+brl(ltv)+’</div><div class="be-lbl">LTV estimado</div></div><div class="be-item"><div class="be-val" style="color:'+(ratio>=3?'var(--success)':ratio>=2?'var(--warning)':'var(--danger)')+'">’+ratio.toFixed(1)+‘x</div><div class="be-lbl">LTV/CAC (meta ≥3x)</div></div><div class="be-item"><div class="be-val" style="font-size:18px">’+brl(cac)+’</div><div class="be-lbl">CAC atual</div></div></div><div class="ib '+(ratio>=3?'ok':ratio>=2?'warn':'danger')+'">’+( ratio>=3?‘Excelente! Aquisição muito saudável.’:ratio>=2?‘Aceitável — busque reduzir CAC ou aumentar retenção.’:‘Atenção: custo de aquisição alto em relação ao LTV.’)+’</div>’;
+}
+function anRFM(){
+const db=getDB();const el=document.getElementById(‘an-rfm-table’);if(!el)return;
+if(!db.clientes.length){el.innerHTML=’<div class="ib tip">Cadastre clientes.</div>’;return;}
+const saidas=db.nfs.filter(n=>n.tipo===‘saida’);const clRec={};
+saidas.forEach(n=>{clRec[n.ent]=(clRec[n.ent]||0)+parseFloat(n.val||0);});
+const sorted=db.clientes.map(c=>({…c,rec:clRec[c.nome]||0})).sort((a,b)=>b.rec-a.rec);const n=sorted.length;
+const classify=(i,status)=>status===‘prospecto’||status===‘inativo’?‘D’:i<n*.2?‘A’:i<n*.5?‘B’:i<n*.8?‘C’:‘D’;
+el.innerHTML=’<table><thead><tr><th>Classe</th><th>Cliente</th><th>Canal</th><th style="text-align:right">Receita NF</th><th>Status</th></tr></thead><tbody>’+sorted.map((c,i)=>{const cls=classify(i,c.status);return’<tr><td><span class="rfm-badge rfm-'+cls+'">’+cls+’</span></td><td><strong>’+c.nome+’</strong></td><td style="font-size:11px">’+(c.canal||’—’)+’</td><td style="text-align:right;font-weight:600">’+brl(c.rec)+’</td><td>’+badge(c.status)+’</td></tr>’;}).join(’’)+’</tbody></table><div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;font-size:11px"><span class="rfm-badge rfm-A">A = Top 20% (clientes VIP)</span><span class="rfm-badge rfm-B">B = Médio-alto</span><span class="rfm-badge rfm-C">C = Médio</span><span class="rfm-badge rfm-D">D = Inativos/Prosp.</span></div>’;
+}
+function anFunil(){
+const db=getDB();const el=document.getElementById(‘an-funil’);if(!el)return;
+const stages=[{l:‘Total Cadastrados’,n:db.clientes.length,c:’#6366f1’},{l:‘Prospectos Ativos’,n:db.clientes.filter(c=>c.status===‘prospecto’).length,c:’#f59e0b’},{l:‘Clientes Ativos’,n:db.clientes.filter(c=>c.status===‘ativo’).length,c:’#22c55e’},{l:‘Com NF registrada’,n:[…new Set(db.nfs.filter(n=>n.tipo===‘saida’).map(n=>n.ent))].length,c:’#0ea5e9’}];
+el.innerHTML=’<div class="funnel">’+stages.map(s=>’<div class="funnel-step"><div class="funnel-label">’+s.l+’</div><div class="funnel-bar-wrap"><div class="funnel-bar" style="background:'+s.c+';'+colorBar(s.n,stages[0].n||1)+'">’+s.n+’</div></div><div class="funnel-num">’+pct(s.n,stages[0].n||1)+’%</div></div>’).join(’’)+’</div>’;
+}
+function anCanalDist(){
+const db=getDB();const el=document.getElementById(‘an-canal-dist’);if(!el)return;
+const byC={};db.clientes.forEach(c=>{if(c.canal)byC[c.canal]=(byC[c.canal]||0)+1;});const tot=db.clientes.length||1;
+const cLbl={farmacia:‘Farmácias’,salao:‘Salões’,distribuidor:‘Dist.’,loja_especializada:‘Lojas’,supermercado:‘Super.’,ecommerce:‘E-com.’,direto:‘Direto’};
+const items=Object.entries(byC).sort((a,b)=>b[1]-a[1]);
+el.innerHTML=items.length?items.map(([k,v])=>’<div class="tf"><div class="tf-l">’+(cLbl[k]||k)+’</div><div class="tf-v" style="display:flex;flex-direction:column;gap:2px;width:60%"><span style="font-size:11px;text-align:right">’+v+’ (’+pct(v,tot)+’%)</span><div class="progress-bar"><div class="progress-fill" style="'+colorBar(v,items[0][1])+'"></div></div></div></div>’).join(’’):’<div class="ib tip">Defina canais nos clientes.</div>’;
+}
+function anCarteira(){
+const db=getDB();const el=document.getElementById(‘an-carteira’);if(!el)return;
+const n=db.clientes.length;const ativos=db.clientes.filter(c=>c.status===‘ativo’).length;const prosps=db.clientes.filter(c=>c.status===‘prospecto’).length;const inat=db.clientes.filter(c=>c.status===‘inativo’).length;
+const txAtivacao=n>0?pct(ativos,n):0;const txChurn=n>0?pct(inat,n):0;
+el.innerHTML=[{l:‘Taxa de Ativação (meta ≥70%)’,v:txAtivacao+’%’,ok:txAtivacao>=70},{l:‘Taxa de Churn (meta ≤10%)’,v:txChurn+’%’,ok:txChurn<=10},{l:‘Pipeline ativo (meta ≥3)’,v:prosps,ok:prosps>=3},{l:‘Total na carteira’,v:n,ok:n>=5}].map(s=>’<div class="score-row"><div class="score-dot" style="background:'+(s.ok?'var(--success)':'var(--danger)')+'"></div><div class="score-lbl">’+s.l+’</div><div style="font-weight:600;font-size:11.5px">’+s.v+’</div></div>’).join(’’);
+}
+
+// =====================================================================
+// ANÁLISE DE PRODUTOS
+// =====================================================================
+function initProdAnalise(){
+anBOMDetail();anContribuicao();anRegulatorio();anSensibilidade();
+}
+function anBOMDetail(){
+const db=getDB();const el=document.getElementById(‘an-bom-detail’);if(!el)return;
+if(!db.custos_prod.length){el.innerHTML=’<div class="ib tip">Registre custos em Financeiro → Custo Produto.</div>’;return;}
+const grouped={};db.custos_prod.forEach(c=>{if(!grouped[c.prod_nome])grouped[c.prod_nome]=[];grouped[c.prod_nome].push(c);});
+el.innerHTML=Object.entries(grouped).map(([pn,itens])=>{const tot=itens.reduce((s,i)=>s+parseFloat(i.qtd||0)*parseFloat(i.val||0),0);return’<div style="margin-bottom:14px"><div style="font-weight:600;font-size:12.5px;color:var(--p);margin-bottom:6px">’+pn+’</div><table><thead><tr><th>Item</th><th>Qtd</th><th>Un</th><th style="text-align:right">Unit.</th><th style="text-align:right">Total</th><th style="text-align:right">%</th></tr></thead><tbody>’+itens.map(i=>{const t=parseFloat(i.qtd||0)*parseFloat(i.val||0);return’<tr><td style="font-size:11.5px">’+i.item+’</td><td>’+i.qtd+’</td><td>’+i.unid+’</td><td style="text-align:right">’+brl(i.val)+’</td><td style="text-align:right;font-weight:500">’+brl(t)+’</td><td style="text-align:right">’+pct(t,tot)+’%</td></tr>’;}).join(’’)+’</tbody><tfoot><tr><td colspan="4"><strong>BOM Total</strong></td><td style="text-align:right;font-weight:700">’+brl(tot)+’</td><td style="text-align:right">100%</td></tr></tfoot></table></div>’;}).join(’’);
+}
+function anContribuicao(){
+const db=getDB();const el=document.getElementById(‘an-contribuicao’);if(!el)return;
+const prods=db.produtos.filter(p=>p.custo&&p.varejo);if(!prods.length){el.innerHTML=’<div class="ib tip">Preencha custo e varejo nos produtos.</div>’;return;}
+el.innerHTML=’<table><thead><tr><th>Produto</th><th style="text-align:right">Preço</th><th style="text-align:right">CMV</th><th style="text-align:right">Cont. Marg.</th><th style="text-align:right">%CM</th></tr></thead><tbody>’+prods.map(p=>{const pr=parseFloat(p.varejo);const cv=parseFloat(p.custo);const cm=pr-cv;const pct_=((cm/pr)*100).toFixed(1);return’<tr><td style="font-size:11.5px">’+p.nome.substring(0,24)+’</td><td style="text-align:right">’+brl(pr)+’</td><td style="text-align:right;color:var(--danger)">’+brl(cv)+’</td><td style="text-align:right;font-weight:600;color:var(--success)">’+brl(cm)+’</td><td style="text-align:right"><span class="badge '+(parseFloat(pct_)>=70?'bg-green':parseFloat(pct_)>=60?'bg-amber':'bg-red')+'">’+pct_+’%</span></td></tr>’;}).join(’’)+’</tbody></table>’;
+}
+function anRegulatorio(){
+const db=getDB();const el=document.getElementById(‘an-regulatorio’);if(!el)return;
+const STATUS={pendente:‘⏳ Pendente’,em_processo:‘📋 Em Processo’,registrado:‘✅ Registrado’,vencido:‘⚠️ Vencido’};
+const GRAU={‘1_notif’:‘Grau 1 (Notif.)’,‘2_reg’:‘Grau 2 (Reg.)’,medicamento:‘Medicamento’};
+el.innerHTML=’<table><thead><tr><th>Produto</th><th>Grau</th><th>Status Anvisa</th><th>Nº Reg.</th><th>Vencimento</th></tr></thead><tbody>’+db.produtos.map(p=>{const s=p.sanv||‘pendente’;const c={pendente:‘bg-amber’,em_processo:‘bg-blue’,registrado:‘bg-green’,vencido:‘bg-red’}[s]||‘bg-gray’;return’<tr><td style="font-size:11.5px"><strong>’+p.nome.substring(0,24)+’</strong></td><td style="font-size:10.5px">’+(GRAU[p.grau]||’—’)+’</td><td><span class="badge '+c+'">’+(STATUS[s]||s)+’</span></td><td style="font-size:11px">’+(p.num_anv||’—’)+’</td><td style="font-size:11px">’+(p.venc_anv||’—’)+’</td></tr>’;}).join(’’)+’</tbody></table>’;
+}
+function anSensibilidade(){
+const db=getDB();const el=document.getElementById(‘an-sensibilidade’);if(!el)return;
+const prods=db.produtos.filter(p=>p.custo&&p.varejo).slice(0,4);if(!prods.length){el.innerHTML=’<div class="ib tip">Preencha custo e varejo nos produtos.</div>’;return;}
+const deltas=[-15,-10,-5,0,+5,+10,+15];
+el.innerHTML=prods.map(p=>{const pr=parseFloat(p.varejo);const cv=parseFloat(p.custo);return’<div style="margin-bottom:12px"><div style="font-size:12px;font-weight:600;color:var(--p);margin-bottom:4px">’+p.nome.substring(0,30)+’</div><div style="display:flex;gap:3px;flex-wrap:wrap">’+deltas.map(d=>{const nv=pr*(1+d/100);const mg=((1-cv/nv)*100).toFixed(1);const c=parseFloat(mg)>=70?‘bg-green’:parseFloat(mg)>=60?‘bg-amber’:‘bg-red’;return’<div style="text-align:center;flex:1;min-width:48px;background:var(--s2);border-radius:6px;padding:5px 3px"><div style="font-size:9px;color:var(--muted)">’+(d>0?’+’:’’)+d+’%</div><div style="font-size:10.5px;font-weight:500">’+brl(nv)+’</div><span class="badge '+c+'" style="font-size:9px">’+mg+’%</span></div>’;}).join(’’)+’</div></div>’;}).join(’’);
+}
+
+// =====================================================================
+// ANÁLISE DE MARKETING
+// =====================================================================
+function initMktAnalise(){
+anROICamp();anInvestCanal();anCAC();anPersonasMapa();anCalendario();
+}
+function anROICamp(){const db=getDB();const el=document.getElementById(‘an-roi-camp’);if(!el)return;if(!db.campanhas.length){el.innerHTML=’<div class="ib tip">Cadastre campanhas.</div>’;return;}el.innerHTML=’<table><thead><tr><th>Campanha</th><th style="text-align:right">Orçamento</th><th>Canal</th><th>Status</th></tr></thead><tbody>’+db.campanhas.map(c=>’<tr><td style="font-size:11.5px"><strong>’+c.nome.substring(0,24)+’</strong><br><small style="color:var(--muted)">’+( c.obj||’’).substring(0,40)+’</small></td><td style="text-align:right">’+brl(c.orc)+’</td><td style="font-size:11px">’+c.canal+’</td><td>’+badge(c.stat)+’</td></tr>’).join(’’)+’</tbody></table>’;}
+function anInvestCanal(){const db=getDB();const el=document.getElementById(‘an-invest-canal’);if(!el)return;const byC={};db.custos_prom.forEach(c=>{byC[c.canal]=(byC[c.canal]||0)+parseFloat(c.val||0);});const tot=Object.values(byC).reduce((s,v)=>s+v,0)||1;el.innerHTML=Object.entries(byC).sort((a,b)=>b[1]-a[1]).map(([k,v])=>’<div class="tf"><div class="tf-l">’+k+’</div><div class="tf-v" style="display:flex;flex-direction:column;gap:2px;width:65%"><span style="font-size:11px;text-align:right">’+brl(v)+’ (’+pct(v,tot)+’%)</span><div class="progress-bar"><div class="progress-fill" style="'+colorBar(v,Object.values(byC)[0]||1)+';background:var(--accent)"></div></div></div></div>’).join(’’)||’<div class="ib tip">Nenhum custo promocional registrado.</div>’;}
+function anCAC(){const db=getDB();const el=document.getElementById(‘an-cac’);if(!el)return;const cprom=db.custos_prom.reduce((s,c)=>s+parseFloat(c.val||0),0);const novos=db.clientes.filter(c=>c.status===‘ativo’).length||1;const cac=cprom/novos;el.innerHTML=’<div class="be-grid"><div class="be-item"><div class="be-val" style="font-size:18px;color:'+(cac<500?'var(--success)':'var(--warning)')+'">’+brl(cac)+’</div><div class="be-lbl">CAC médio</div></div><div class="be-item"><div class="be-val" style="font-size:18px">’+brl(cprom)+’</div><div class="be-lbl">Investido promo</div></div><div class="be-item"><div class="be-val">’+novos+’</div><div class="be-lbl">Clientes ativos</div></div></div><div class="ib '+(cac<500?'ok':'warn')+'">CAC ideal para este mercado: <strong>R$ 350–500</strong>.</div>’;}
+function anPersonasMapa(){const db=getDB();const el=document.getElementById(‘an-personas-mapa’);if(!el)return;if(!db.personas.length){el.innerHTML=’<div class="ib tip">Cadastre personas.</div>’;return;}el.innerHTML=’<table><thead><tr><th>Persona</th><th>Produtos Indicados</th><th>Canais</th></tr></thead><tbody>’+db.personas.map(p=>’<tr><td><strong>’+p.emoji+’ ‘+p.nome.split(’—’)[0]+’</strong><br><small style="color:var(--muted)">’+p.idade+’ · ‘+p.renda+’</small></td><td style="font-size:11.5px">’+(p.prods||’—’)+’</td><td style="font-size:11px;color:var(--t2)">’+(p.canais||’—’)+’</td></tr>’).join(’’)+’</tbody></table>’;}
+function anCalendario(){const el=document.getElementById(‘an-calendario’);if(!el)return;const semanas=[‘Sem 1’,‘Sem 2’,‘Sem 3’,‘Sem 4’];const temas=[‘Educativo — Ativo principal do produto’,‘Bastidores + processo + marca’,‘Case de cliente / prova social’,‘Lançamento / oferta + CTA de venda’];const formatos=[‘Carrossel 5-7 slides (Instagram)’,‘Reels 30s + Story’,‘Stories + enquete + depoimento’,‘Post feed + Stories urgência’];el.innerHTML=’<table><thead><tr><th>Semana</th><th>Tema</th><th>Formato</th><th>Status</th></tr></thead><tbody>’+semanas.map((s,i)=>’<tr><td><strong>’+s+’</strong></td><td style="font-size:12px">’+temas[i]+’</td><td style="font-size:11px">’+formatos[i]+’</td><td><span class="badge bg-amber">Planejar</span></td></tr>’).join(’’)+’</tbody></table>’;}
+
+// =====================================================================
+// ANÁLISE DE FORNECEDORES
+// =====================================================================
+function initFornAnalise(){
+anGastoForn();anMatrizRisk();anRankForn();anConcentracao();anLeadTime();
+}
+function anGastoForn(){const db=getDB();const el=document.getElementById(‘an-gasto-forn’);if(!el)return;if(!db.custos_prod.length){el.innerHTML=’<div class="ib tip">Registre custos de produto para ver gasto por fornecedor.</div>’;return;}const byF={};db.custos_prod.forEach(c=>{if(c.forn_nome)byF[c.forn_nome]=(byF[c.forn_nome]||0)+parseFloat(c.qtd||0)*parseFloat(c.val||0);});const tot=Object.values(byF).reduce((s,v)=>s+v,0)||1;el.innerHTML=’<table><thead><tr><th>#</th><th>Fornecedor</th><th style="text-align:right">Gasto</th><th style="text-align:right">%</th><th>Concentração</th></tr></thead><tbody>’+Object.entries(byF).sort((a,b)=>b[1]-a[1]).map(([n,v],i)=>{const p=pct(v,tot);const risk=p>40?‘bg-red’:p>25?‘bg-amber’:‘bg-green’;return’<tr><td><strong>’+(i+1)+‘º</strong></td><td>’+n+’</td><td style="text-align:right;font-weight:600">’+brl(v)+’</td><td style="text-align:right">’+p+’%</td><td><span class="badge '+risk+'">’+(p>40?‘Alto’:p>25?‘Médio’:‘OK’)+’</span></td></tr>’;}).join(’’)+’</tbody></table>’;}
+function anMatrizRisk(){const db=getDB();const el=document.getElementById(‘an-matriz-risk’);if(!el)return;const cats=[‘ativos’,‘embalagens’,‘conservantes’,‘rotulos’,‘fragrancias’,‘quimicos’];el.innerHTML=’<table><thead><tr><th>Categoria</th><th style="text-align:center">Forn.</th><th>Criticidade</th><th style="text-align:center">Backup?</th><th>Ação</th></tr></thead><tbody>’+cats.map(cat=>{const n=db.fornecedores.filter(f=>f.cat===cat).length;const crit=cat===‘ativos’||cat===‘embalagens’?‘Alta’:cat===‘conservantes’||cat===‘rotulos’?‘Média’:‘Baixa’;const backup=n>=2;const acao=!backup&&crit===‘Alta’?‘🚨 Qualificar 2º urgente’:!backup?‘⚠️ Recomendar backup’:‘✅ OK’;return’<tr><td style="font-size:12px;font-weight:500">’+cat.replace(’*’,’ ‘)+’</td><td style="text-align:center;font-weight:600">’+n+’</td><td><span class="badge '+({Alta:'bg-red',Média:'bg-amber',Baixa:'bg-green'}[crit])+'">’+crit+’</span></td><td style="text-align:center">’+(backup?‘✅’:’<span style="color:var(--danger)">❌</span>’)+’</td><td style="font-size:11px">’+acao+’</td></tr>’;}).join(’’)+’</tbody></table>’;}
+function anRankForn(){const db=getDB();const el=document.getElementById(‘an-rank-forn’);if(!el)return;if(!db.fornecedores.length){el.innerHTML=’<div class="ib tip">Cadastre fornecedores.</div>’;return;}el.innerHTML=db.fornecedores.slice().sort((a,b)=>parseInt(b.av)-parseInt(a.av)).map((f,i)=>’<div class="tf"><div class="tf-l" style="font-size:12px"><strong>’+(i+1)+’.</strong> ‘+f.nome+’</div><div class="tf-v">’+‘⭐’.repeat(parseInt(f.av)||0)+’</div></div>’).join(’’);}
+function anConcentracao(){const db=getDB();const el=document.getElementById(‘an-concentracao’);if(!el)return;const byC={};db.fornecedores.forEach(f=>{byC[f.cat]=(byC[f.cat]||0)+1;});const tot=db.fornecedores.length||1;el.innerHTML=Object.entries(byC).sort((a,b)=>b[1]-a[1]).map(([k,v])=>’<div class="tf"><div class="tf-l" style="font-size:11.5px">’+k.replace(’*’,’ ‘)+’</div><div class="tf-v"><span style="font-weight:600">’+v+’</span><div class="progress-bar" style="margin-top:3px;width:80px"><div class="progress-fill" style="'+colorBar(v,Object.values(byC)[0]||1)+'"></div></div></div></div>’).join(’’);}
+function anLeadTime(){const db=getDB();const el=document.getElementById(‘an-leadtime’);if(!el)return;const byC={};const cntC={};db.fornecedores.forEach(f=>{if(f.prazo&&f.cat){byC[f.cat]=(byC[f.cat]||0)+parseInt(f.prazo);cntC[f.cat]=(cntC[f.cat]||0)+1;}});el.innerHTML=Object.entries(byC).sort((a,b)=>b[1]-a[1]).map(([k,v])=>{const avg=Math.round(v/cntC[k]);const c=avg<=7?‘var(–success)’:avg<=14?‘var(–warning)’:‘var(–danger)’;return’<div class="tf"><div class="tf-l" style="font-size:11.5px">’+k.replace(’_’,’ ‘)+’</div><div class="tf-v" style="display:flex;align-items:center;gap:6px"><span style="font-weight:600;color:'+c+'">’+avg+‘d</span><div class="progress-bar" style="width:80px"><div class="progress-fill" style="'+colorBar(avg,30)+';background:'+c+'"></div></div></div></div>’;}).join(’’)||’<div class="ib tip">Cadastre prazo de entrega nos fornecedores.</div>’;}
+
+// =====================================================================
+// TABS — callback para inicializar análise ao clicar
+// =====================================================================
+const TAB_INITS = {
+‘dt-financeiro’: initFinAnalise,
+‘dt-clientes’: initCliAnalise,
+‘dt-produtos’: initProdAnalise,
+‘dt-marketing’: initMktAnalise,
+‘dt-fornecedores’: initFornAnalise,
+};
+const _origStab = stab;
+function stab(prefix, tab, el) {
+_origStab(prefix, tab, el);
+const panelId = prefix + ‘-’ + tab;
+if (TAB_INITS[panelId]) TAB_INITS[panelId]();
+}
+
+// =====================================================================
+// INICIALIZAR
+// =====================================================================
+renderSidebar(‘dashboard’);
+initDash();
+
+</script>
+</body>
+</html>
