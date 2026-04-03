@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derm.ethic — Formulação</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="wrap">
+<div id="sidebar-container"></div>
+<main class="main">
+  <div class="page-hdr"><div><div class="page-title">Formulação de Produtos</div><div class="page-sub">Fichas técnicas, INCI, regulatório Anvisa, BOM e processo de P&D</div></div><button class="btn btn-p" onclick="openM('m-prod')">+ Nova Formulação</button></div>
+  <div class="page-body">
+    <div class="tabs">
+      <div class="tab active" onclick="stab('ft','produtos',this)">🧪 Portfólio</div>
+      <div class="tab" onclick="stab('ft','pipeline',this)">🔬 Pipeline P&D</div>
+      <div class="tab" onclick="stab('ft','processo',this)">📋 Processo de Desenvolvimento</div>
+      <div class="tab" onclick="stab('ft','qualidade',this)">✅ Controle de Qualidade</div>
+    </div>
+
+```
+<div id="ft-produtos" class="tc-panel active">
+  <div class="sbar">
+    <div class="sw-wrap"><span class="sw-ic">🔍</span><input class="si" id="q-pr" type="text" placeholder="Buscar produtos..." oninput="rPr()"></div>
+    <select class="fs" id="fil-cat" onchange="rPr()" style="width:150px"><option value="">Todas Categorias</option><option value="skincare">Skincare</option><option value="shampoo">Shampoo</option><option value="capilar">Capilar</option><option value="solar">Solar</option><option value="corporal">Corporal</option></select>
+    <select class="fs" id="fil-pst" onchange="rPr()" style="width:150px"><option value="">Todos Status</option><option value="desenvolvimento">Em Desenvolvimento</option><option value="aprovacao">Ag. Aprovação</option><option value="ativo">Ativo</option><option value="descontinuado">Descontinuado</option></select>
+  </div>
+  <div class="g3" id="grid-pr"></div>
+  <div id="emp-pr" class="empty"><div class="empty-icon">🧪</div><h3>Nenhum produto</h3><p>Crie fichas técnicas completas para seus produtos.</p><button class="btn btn-p" onclick="openM('m-prod')">+ Nova Formulação</button></div>
+</div>
+
+<div id="ft-pipeline" class="tc-panel">
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-title">🔬 Pipeline de Desenvolvimento — Status Atual</div>
+    <div id="pipeline-view"></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">📅 Próximos Marcos</div>
+      <div id="marcos-view"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">💡 Ideias em Avaliação</div>
+      <div class="ib tip">Registre aqui oportunidades de novos produtos identificadas a partir de: feedback de clientes, tendências de mercado, solicitações de dermatologistas e análise competitiva.</div>
+      <div class="step"><div class="step-num">💡</div><div class="step-content"><h4>Hidratante Urea 10% + Ceramidas</h4><p>Demanda identificada por farmácias para pacientes de dermatite. Avaliar viabilidade Anvisa e custo de fórmula.</p></div></div>
+      <div class="step"><div class="step-num">💡</div><div class="step-content"><h4>Linha Masculina — Skincare Simples</h4><p>Tendência crescente de skincare masculino. Persona Rafael identificada. 3 produtos: limpeza + hidratante + FPS 50+.</p></div></div>
+      <div class="step"><div class="step-num">💡</div><div class="step-content"><h4>Sérum Anti-manchas com Ácido Kójico</h4><p>Alta demanda por tratamento de manchas. Verificar concentração permitida Anvisa e estabilidade da fórmula.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="ft-processo" class="tc-panel">
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">🔬 Processo de Desenvolvimento — Gate Review</div>
+      <div class="ib info">Cada produto passa por etapas (gates). Só avança ao próximo gate se cumprir todos os critérios da fase anterior.</div>
+      <div class="step"><div class="step-num">G1</div><div class="step-content"><h4>Conceito e Brief</h4><p>Definir: público-alvo, problema resolvido, ativo principal, forma cosmética, faixa de preço alvo, posicionamento e canais de venda pretendidos.</p></div></div>
+      <div class="step"><div class="step-num">G2</div><div class="step-content"><h4>Pesquisa e Formulação</h4><p>Pesquisar ingredientes, concentrações, incompatibilidades. Desenvolver protótipo em bancada. Primeiras avaliações organolépticas (cor, odor, textura, espalhabilidade).</p></div></div>
+      <div class="step"><div class="step-num">G3</div><div class="step-content"><h4>Estabilidade e Segurança</h4><p>Laudo de estabilidade acelerada (28 dias a 40°C). Laudo microbiológico (challenge test). Laudo de segurança pela Dra. Beatriz. Avaliação de tolerabilidade em painelistas.</p></div></div>
+      <div class="step"><div class="step-num">G4</div><div class="step-content"><h4>Regulatório e Embalagem</h4><p>Notificação ou registro Anvisa. Desenvolvimento de rótulo conforme RDC 04/2014. Validação de arte com responsável técnico. Aprovação de embalagem e material.</p></div></div>
+      <div class="step"><div class="step-num">G5</div><div class="step-content"><h4>Produção Piloto</h4><p>Lote piloto com LabCosm: 100–500 unidades. Validação de processo industrial, uniformidade do lote e análise de COA do produto acabado.</p></div></div>
+      <div class="step"><div class="step-num">G6</div><div class="step-content"><h4>Lançamento Comercial</h4><p>Produto aprovado para venda. Cadastro definitivo no sistema, ativação dos canais de venda e início de campanha de marketing.</p></div></div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title">📊 Análise de BOM (Bill of Materials)</div>
+        <div class="ib tip"><strong>Regra de ouro:</strong> O custo de produção (BOM) não deve ultrapassar 25% do preço de varejo para garantir margem saudável em toda a cadeia.</div>
+        <div id="bom-view"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚗️ Compatibilidade de Ingredientes</div>
+        <div class="ib warn"><strong>Vitamina C + Niacinamida:</strong> Em alta concentração, podem formar nicotinato de tocopheryl (amarelamento). Usar separados em rotinas ou em concentrações controladas.</div>
+        <div class="ib warn"><strong>Retinol + AHA/BHA:</strong> Não usar na mesma formulação — redução mútua de eficácia e risco de irritação.</div>
+        <div class="ib warn"><strong>Avobenzone + Octocrylene:</strong> Podem causar fotodegradação se não estabilizados corretamente — usar estabilizador específico.</div>
+        <div class="ib ok"><strong>Niacinamida + Zinco + Ácido Hialurônico:</strong> Combinação excelente — sinergismo comprovado para pele oleosa/acneica.</div>
+        <div class="ib ok"><strong>Vitamina C + Vitamina E + Ácido Ferúlico:</strong> A "tríade antioxidante" — aumento de 8x na proteção antioxidante vs. vitamina C isolada.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="ft-qualidade" class="tc-panel">
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">✅ Checklist de Controle de Qualidade por Lote</div>
+      <div class="ib ok">Realizar para cada lote antes de liberar para venda ou envio.</div>
+      <div class="sh">Análise Organoléptica</div>
+      <div class="checklist-item"><input type="checkbox"><div>Aspecto: transparente, turvo, cremoso (conforme fórmula)</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Cor: dentro do padrão aprovado (comparar com master)</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Odor: fragrância e intensidade dentro do esperado</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Textura: espalhabilidade, viscosidade e sensorial corretos</div></div>
+      <div class="div"></div>
+      <div class="sh">Análise Físico-Química</div>
+      <div class="checklist-item"><input type="checkbox"><div>pH: dentro da faixa especificada (tolerância ±0,3)</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Viscosidade: dentro do range aprovado (quando aplicável)</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Densidade: conforme especificação</div></div>
+      <div class="div"></div>
+      <div class="sh">Embalagem e Rotulagem</div>
+      <div class="checklist-item"><input type="checkbox"><div>Rótulo: versão correta, legível, sem defeitos</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Lote e validade impressos corretamente</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Volume/peso correto (pesagem ou medição)</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Tampa ou bomba funcionando sem vazamento</div></div>
+      <div class="div"></div>
+      <div class="sh">Documentação</div>
+      <div class="checklist-item"><input type="checkbox"><div>COA do produto acabado emitido pelo LabCosm</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Número do lote registrado no sistema</div></div>
+      <div class="checklist-item"><input type="checkbox"><div>Rastreabilidade de matérias-primas documentada</div></div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-title">🔬 Laudos Obrigatórios por Categoria</div>
+        <table><thead><tr><th>Produto</th><th>Laudos necessários</th><th>Prazo</th></tr></thead>
+        <tbody>
+          <tr><td>Cosmético Grau 1</td><td>Estabilidade acelerada, Microbiológico</td><td>Antes de notificar</td></tr>
+          <tr><td>Cosmético Grau 2</td><td>Estabilidade, Segurança, Microbiológico, Eficácia</td><td>Antes do registro</td></tr>
+          <tr><td>Protetor Solar</td><td>FPS in vivo (metodologia FDA/ISO), UVA, Water resistance</td><td>Obrigatório</td></tr>
+          <tr><td>Anticaspa</td><td>Eficácia clínica, Microbiológico</td><td>Registro Grau 2</td></tr>
+          <tr><td>Clareador</td><td>Eficácia (tyrosinase ou melanina), Segurança</td><td>Registro Grau 2</td></tr>
+        </tbody></table>
+      </div>
+      <div class="card">
+        <div class="card-title">🚨 Procedimento para Desvio de Qualidade</div>
+        <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Identificar e isolar o lote</h4><p>Separar fisicamente. Não enviar ao cliente. Registrar ocorrência com foto e descrição do desvio.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Investigação de causa raiz</h4><p>Verificar matérias-primas usadas, condições de produção, equipamentos. Solicitar laudo ao LabCosm.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Decisão sobre o lote</h4><p>Reprocessar (se viável), descartar ou classificar como reprovado. Nunca expedir lote com desvio confirmado.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Ação corretiva</h4><p>Implementar ação para evitar recorrência. Registrar na ficha do parceiro de produção se a falha for do terceirizado.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</main>
+</div><!-- /wrap -->
+
+<div class="mo" id="m-prod">
+  <div class="modal modal-lg">
+    <div class="mhdr"><div class="mtitle" id="t-prod">Nova Formulação</div><button class="mclose" onclick="closeM('m-prod')">✕</button></div>
+    <div class="mbody">
+      <input type="hidden" id="p-id">
+      <div class="tabs" id="tabs-prod" style="margin-bottom:16px">
+        <div class="tab active" onclick="stab('tp','geral',this)">Geral</div>
+        <div class="tab" onclick="stab('tp','formula',this)">Fórmula INCI</div>
+        <div class="tab" onclick="stab('tp','reg',this)">Regulatório</div>
+        <div class="tab" onclick="stab('tp','com',this)">Comercial</div>
+      </div>
+      <div id="tp-geral" class="tc-panel active">
+        <div class="fr"><div class="fg"><label class="flbl">Nome do Produto</label><input type="text" class="fi" id="p-nome"></div><div class="fg"><label class="flbl">Linha</label><input type="text" class="fi" id="p-linha"></div></div>
+        <div class="fr"><div class="fg"><label class="flbl">Categoria</label><select class="fs" id="p-cat"><option value="skincare">Skincare</option><option value="shampoo">Shampoo/Condicionador</option><option value="capilar">Tratamento Capilar</option><option value="corporal">Corporal</option><option value="solar">Protetor Solar</option><option value="perfumaria">Perfumaria</option><option value="outros">Outros</option></select></div><div class="fg"><label class="flbl">Forma</label><select class="fs" id="p-forma"><option value="serum">Sérum</option><option value="creme">Creme/Loção</option><option value="gel">Gel</option><option value="shampoo">Shampoo</option><option value="oleo">Óleo</option><option value="mascara">Máscara</option><option value="outros">Outros</option></select></div></div>
+        <div class="fr"><div class="fg"><label class="flbl">Público-Alvo</label><input type="text" class="fi" id="p-pub"></div><div class="fg"><label class="flbl">Faixa pH</label><input type="text" class="fi" id="p-ph" placeholder="4,5 – 5,5"></div></div>
+        <div class="fg"><label class="flbl">Descrição / Benefícios</label><textarea class="ft" id="p-desc"></textarea></div>
+        <div class="fg"><label class="flbl">Modo de Uso</label><textarea class="ft" id="p-uso"></textarea></div>
+        <div class="fr"><div class="fg"><label class="flbl">Validade (meses)</label><input type="number" class="fi" id="p-val"></div><div class="fg"><label class="flbl">PAO</label><input type="text" class="fi" id="p-pao" placeholder="12M"></div></div>
+      </div>
+      <div id="tp-formula" class="tc-panel">
+        <div class="fg"><label class="flbl">Lista INCI completa (ordem decrescente de conc.)</label><textarea class="ft" id="p-inci" style="min-height:120px;font-family:monospace;font-size:12px"></textarea></div>
+        <div class="fr"><div class="fg"><label class="flbl">Ativo Principal</label><input type="text" class="fi" id="p-ativo"></div><div class="fg"><label class="flbl">Concentração</label><input type="text" class="fi" id="p-conc"></div></div>
+        <div class="fg"><label class="flbl">Origem dos ingredientes</label><input type="text" class="fi" id="p-origem"></div>
+        <div class="fg"><label class="flbl">Notas técnicas</label><textarea class="ft" id="p-obs_f"></textarea></div>
+      </div>
+      <div id="tp-reg" class="tc-panel">
+        <div class="fr"><div class="fg"><label class="flbl">Grau Anvisa</label><select class="fs" id="p-grau"><option value="1_notif">Grau 1 — Notificação</option><option value="2_reg">Grau 2 — Registro</option><option value="medicamento">Medicamento</option></select></div><div class="fg"><label class="flbl">Status Anvisa</label><select class="fs" id="p-sanv"><option value="pendente">Pendente</option><option value="em_processo">Em Processo</option><option value="registrado">Registrado</option><option value="vencido">Vencido</option></select></div></div>
+        <div class="fr"><div class="fg"><label class="flbl">Nº Registro/Notificação</label><input type="text" class="fi" id="p-num_anv"></div><div class="fg"><label class="flbl">Vencimento</label><input type="date" class="fi" id="p-venc_anv"></div></div>
+        <div class="fg"><label class="flbl">Claims aprovados</label><textarea class="ft" id="p-claims"></textarea></div>
+        <div class="fg"><label class="flbl">Restrições/Contraindicações</label><textarea class="ft" id="p-rest"></textarea></div>
+        <div class="fg"><label class="flbl">Laudos técnicos</label><input type="text" class="fi" id="p-laudos"></div>
+      </div>
+      <div id="tp-com" class="tc-panel">
+        <div class="fr"><div class="fg"><label class="flbl">Volume/Gramatura</label><input type="text" class="fi" id="p-vol" placeholder="30ml"></div><div class="fg"><label class="flbl">Custo Produção (R$)</label><input type="number" class="fi" id="p-custo" step="0.01"></div></div>
+        <div class="fr"><div class="fg"><label class="flbl">Preço Varejo (R$)</label><input type="number" class="fi" id="p-varejo" step="0.01"></div><div class="fg"><label class="flbl">Preço Atacado (R$)</label><input type="number" class="fi" id="p-atacado" step="0.01"></div></div>
+        <div class="fr"><div class="fg"><label class="flbl">Canais de Venda</label><input type="text" class="fi" id="p-canais"></div><div class="fg"><label class="flbl">Status</label><select class="fs" id="p-pstatus"><option value="desenvolvimento">Em Desenvolvimento</option><option value="aprovacao">Aguardando Aprovação</option><option value="ativo">Ativo</option><option value="descontinuado">Descontinuado</option></select></div></div>
+      </div>
+    </div>
+    <div class="mfoot"><button class="btn btn-o" onclick="closeM('m-prod')">Cancelar</button><button class="btn btn-p" onclick="savePr()">💾 Salvar</button></div>
+  </div>
+</div>
+
+<div class="mo" id="m-prod-det">
+  <div class="modal modal-lg">
+    <div class="mhdr"><div class="mtitle" id="det-prod-t">Produto</div><button class="mclose" onclick="closeM('m-prod-det')">✕</button></div>
+    <div class="mbody" id="det-prod-b"></div>
+    <div class="mfoot"><button class="btn btn-o" onclick="closeM('m-prod-det')">Fechar</button><button class="btn btn-p" id="btn-edit-pr">✏️ Editar</button></div>
+  </div>
+</div>
+
+<div class="tcon" id="tcon"></div>
+<script src="js/db.js"></script>
+<script>
+renderSidebar('formulacao');
+function rPr(){
+  const db=getDB();const q=(document.getElementById('q-pr')?.value||"").toLowerCase();
+  const fc=document.getElementById('fil-cat').value;const fp=document.getElementById('fil-pst').value;
+  let list=db.produtos.filter(p=>(p.nome?.toLowerCase().includes(q)||p.categoria?.toLowerCase().includes(q))&&(!fc||p.categoria===fc)&&(!fp||p.pstatus===fp));
+  const grid=document.getElementById('grid-pr'),emp=document.getElementById('emp-pr');
+  if(!list.length){grid.style.display='none';emp.style.display='block';return;}
+  emp.style.display='none';grid.style.display='grid';
+  grid.innerHTML=list.map(p=>`<div class="prod-card" onclick="viewPr('${p.id}')">
+    <div class="pc-hdr"><div class="pc-name">${p.nome}</div><div class="pc-cat">${p.linha?p.linha+" · ":""}${p.categoria||"—"}</div></div>
+    <div class="pc-body">
+      <div style="display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap">${badge(p.pstatus)}${badge(p.sanv)}</div>
+      ${p.ativo?`<div style="font-size:11px;color:var(--muted)">🧪 ${p.ativo} ${p.conc||""}</div>`:""}
+      ${p.custo&&p.varejo?`<div style="font-size:11px;margin-top:4px;color:var(--success);font-weight:500">Margem: ${((1-parseFloat(p.custo)/parseFloat(p.varejo))*100).toFixed(1)}%</div>`:""}
+      <div style="display:flex;gap:5px;margin-top:10px" onclick="event.stopPropagation()">
+        <button class="btn btn-o btn-sm" onclick="editPr('${p.id}')">✏️</button>
+        <button class="btn btn-d btn-sm" onclick="delPr('${p.id}')">🗑</button>
+      </div>
+    </div></div>`).join("");
+  buildPipeline();buildBOM();
+}
+function buildPipeline(){
+  const db=getDB();
+  const stages=[{key:'desenvolvimento',label:'Em Desenvolvimento'},{key:'aprovacao',label:'Ag. Aprovação'},{key:'ativo',label:'Ativo'},{key:'descontinuado',label:'Descontinuado'}];
+  document.getElementById('pipeline-view').innerHTML=`<div style="display:flex;gap:10px;overflow-x:auto;padding-bottom:4px">${stages.map(s=>{const ps=db.produtos.filter(p=>p.pstatus===s.key);return`<div style="flex:1;min-width:140px;background:var(--s2);border-radius:8px;padding:10px"><div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:8px">${s.label} (${ps.length})</div>${ps.map(p=>`<div style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:8px;margin-bottom:6px;font-size:11.5px"><strong>${p.nome}</strong><br><span style="color:var(--muted)">${p.categoria||"—"}</span></div>`).join("")}</div>`;}).join("")}</div>`;
+  document.getElementById('marcos-view').innerHTML=db.produtos.filter(p=>p.sanv==='em_processo').map(p=>`<div class="alert-item warn"><span>⏳</span><span><strong>${p.nome}</strong> — Regularização Anvisa em andamento</span></div>`).join("")||'<div class="ib ok">Nenhum marco pendente crítico.</div>';
+}
+function buildBOM(){
+  const db=getDB();
+  const prods=db.produtos.filter(p=>p.custo&&p.varejo);
+  document.getElementById('bom-view').innerHTML=prods.length?prods.map(p=>{const m=((1-parseFloat(p.custo)/parseFloat(p.varejo))*100).toFixed(1);const mc=parseFloat(m)>=75?'var(--success)':parseFloat(m)>=60?'var(--warning)':'var(--danger)';return`<div class="tf"><div class="tf-l" style="font-size:11.5px">${p.nome}</div><div class="tf-v"><div style="display:flex;justify-content:space-between"><span>Custo: ${brl(p.custo)} | Varejo: ${brl(p.varejo)}</span><span style="font-weight:600;color:${mc}">${m}%</span></div><div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:${m}%;background:${mc}"></div></div></div></div>`;}).join(""):"<div class='ib tip'>Preencha custo e preço de varejo nos produtos para ver o BOM.</div>";
+}
+function savePr(){
+  const id=document.getElementById('p-id').value,db=getDB();
+  const fields=['nome','linha','pub','ph','desc','uso','val','pao','inci','ativo','conc','origem','obs_f','num_anv','venc_anv','claims','rest','laudos','vol','custo','varejo','atacado','canais'];
+  const o={id:id||genID()};fields.forEach(k=>{const el=document.getElementById('p-'+k);if(el)o[k]=el.value?.trim?.()||el.value;});
+  o.categoria=document.getElementById('p-cat').value;o.forma=document.getElementById('p-forma').value;o.grau=document.getElementById('p-grau').value;o.sanv=document.getElementById('p-sanv').value;o.pstatus=document.getElementById('p-pstatus').value;
+  if(!o.nome){toast('Nome obrigatório','e');return;}
+  if(id){const i=db.produtos.findIndex(x=>x.id===id);if(i>=0)db.produtos[i]={...db.produtos[i],...o};}else db.produtos.push(o);
+  saveDB(db);closeM('m-prod');rPr();toast(id?'Produto atualizado!':'Formulação salva!','s');document.getElementById('p-id').value='';
+}
+function editPr(id){
+  const db=getDB(),p=db.produtos.find(x=>x.id===id);if(!p)return;
+  document.getElementById('p-id').value=p.id;
+  ['nome','linha','pub','ph','desc','uso','val','pao','inci','ativo','conc','origem','obs_f','num_anv','venc_anv','claims','rest','laudos','vol','custo','varejo','atacado','canais'].forEach(k=>{const el=document.getElementById('p-'+k);if(el)el.value=p[k]||"";});
+  document.getElementById('p-cat').value=p.categoria||'skincare';document.getElementById('p-forma').value=p.forma||'serum';document.getElementById('p-grau').value=p.grau||'1_notif';document.getElementById('p-sanv').value=p.sanv||'pendente';document.getElementById('p-pstatus').value=p.pstatus||'desenvolvimento';
+  document.getElementById('t-prod').textContent='Editar Formulação';document.querySelector('#tabs-prod .tab').click();openM('m-prod');
+}
+function viewPr(id){
+  const db=getDB(),p=db.produtos.find(x=>x.id===id);if(!p)return;
+  document.getElementById('det-prod-t').textContent=p.nome;
+  document.getElementById('btn-edit-pr').onclick=()=>{closeM('m-prod-det');editPr(id);};
+  const m=p.custo&&p.varejo?((1-parseFloat(p.custo)/parseFloat(p.varejo))*100).toFixed(1)+'%':'—';
+  document.getElementById('det-prod-b').innerHTML=`
+    <div class="g2"><div>
+      <div class="sh">Identificação</div>
+      <div class="tf"><div class="tf-l">Categoria</div><div class="tf-v">${p.categoria||'—'}</div></div>
+      <div class="tf"><div class="tf-l">Forma</div><div class="tf-v">${p.forma||'—'}</div></div>
+      <div class="tf"><div class="tf-l">Volume</div><div class="tf-v">${p.vol||'—'}</div></div>
+      <div class="tf"><div class="tf-l">pH</div><div class="tf-v">${p.ph||'—'}</div></div>
+      <div class="tf"><div class="tf-l">Validade</div><div class="tf-v">${p.val?p.val+' meses':'—'}</div></div>
+      <div class="tf"><div class="tf-l">PAO</div><div class="tf-v">${p.pao||'—'}</div></div>
+    </div><div>
+      <div class="sh">Comercial</div>
+      <div class="tf"><div class="tf-l">Ativo Principal</div><div class="tf-v">${p.ativo?p.ativo+' '+p.conc:'—'}</div></div>
+      <div class="tf"><div class="tf-l">Custo</div><div class="tf-v">${p.custo?brl(p.custo):'—'}</div></div>
+      <div class="tf"><div class="tf-l">Preço Varejo</div><div class="tf-v">${p.varejo?brl(p.varejo):'—'}</div></div>
+      <div class="tf"><div class="tf-l">Margem Bruta</div><div class="tf-v" style="color:var(--success);font-weight:600">${m}</div></div>
+      <div class="tf"><div class="tf-l">Status Prod.</div><div class="tf-v">${badge(p.pstatus)}</div></div>
+      <div class="tf"><div class="tf-l">Status Anvisa</div><div class="tf-v">${badge(p.sanv)}</div></div>
+    </div></div>
+    ${p.desc?`<div class="div"></div><div class="sh">Benefícios</div><p style="font-size:13px;color:var(--t2);line-height:1.7">${p.desc}</p>`:""}
+    ${p.uso?`<div class="div"></div><div class="sh">Modo de Uso</div><p style="font-size:13px;color:var(--t2);line-height:1.7">${p.uso}</p>`:""}
+    ${p.inci?`<div class="div"></div><div class="sh">Lista INCI</div><div style="font-family:monospace;font-size:12px;background:var(--s2);padding:11px;border-radius:7px;line-height:1.8">${p.inci}</div>`:""}
+    ${p.claims?`<div class="div"></div><div class="ib ok"><strong>Claims:</strong> ${p.claims}</div>`:""}
+    ${p.rest?`<div class="ib warn"><strong>Restrições:</strong> ${p.rest}</div>`:""}
+  `;openM('m-prod-det');
+}
+function delPr(id){if(!confirm('Excluir produto?'))return;const db=getDB();db.produtos=db.produtos.filter(p=>p.id!==id);saveDB(db);rPr();toast('Removido','s');}
+rPr();
+</script>
+</body>
+</html>
